@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule, NgClass } from '@angular/common';
 import { ConfigComponent } from '../config-component/config-component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Nav } from '../../../shared/components/nav/nav';
+import { Footer } from "../../../shared/components/footer/footer";
 
 
 interface Todo{
@@ -19,7 +21,7 @@ interface Todo{
 
 @Component({
   selector: 'app-todo-list',
-  imports: [MatInputModule, MatFormFieldModule, MatIconModule, MatCardModule, MatCheckboxModule, FormsModule,NgClass,CommonModule, MatDialogModule],
+  imports: [MatInputModule, MatFormFieldModule, MatIconModule, MatCardModule, MatCheckboxModule, FormsModule, NgClass, CommonModule, MatDialogModule, Nav, Footer],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.scss',
 })
