@@ -10,7 +10,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" [class.show]="!isMenuCollapsed" id="navbarNav">
-      <ul class="navbar-nav">
+       <ul class="navbar-nav">
+      @if (isLogin ===true) {
+       
         <li class="nav-item">
           <a class="nav-link active text-white" aria-current="page" routerLink="/home" routerLinkActive="border border-primary" >Home</a>
         </li>
@@ -23,6 +25,17 @@
         <li class="nav-item">
           <a class="nav-link Disabled text-white" aria-disabled="true">Task 3</a>
         </li>
+       
+      }@else if (isLogin === false)  { 
+         <li class="nav-item">
+          <a class="nav-link active text-white"routerLink="/login" routerLinkActive="border border-primary" >LOGIN</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active text-white " routerLink="/register" routerLinkActive="border border-primary">REGISTER</a>
+        </li>
+      }
+      
+       
       </ul>
     </div>
   </div>

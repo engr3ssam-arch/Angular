@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonEngine } from '@angular/ssr/node';
 
@@ -10,9 +10,11 @@ import { CommonEngine } from '@angular/ssr/node';
   styleUrl: './nav.scss',
 })
 export class Nav {
-  isMenuCollapsed = true;
-
   
+
+ @Input({required:true}) isLogin !:boolean ;
+
+  isMenuCollapsed = true;
   toggleNavbar() {
     this.isMenuCollapsed = !this.isMenuCollapsed;
   }

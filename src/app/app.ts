@@ -8,7 +8,7 @@ import { NotFound } from "./features/components/not-found/not-found";
 
 @Component({
   selector: 'app-root',
-  imports: [TodoList, Home, NotFound, RouterOutlet],
+  imports: [ RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
