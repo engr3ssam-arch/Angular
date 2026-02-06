@@ -12,8 +12,6 @@ import { CommonEngine } from '@angular/ssr/node';
 export class Nav {
   
 
- @Input({required:true}) isLogin !:boolean ;
-
   isMenuCollapsed = true;
   toggleNavbar() {
     this.isMenuCollapsed = !this.isMenuCollapsed;

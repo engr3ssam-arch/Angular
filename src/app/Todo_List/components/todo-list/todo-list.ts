@@ -21,7 +21,7 @@ interface Todo{
 
 @Component({
   selector: 'app-todo-list',
-  imports: [MatInputModule, MatFormFieldModule, MatIconModule, MatCardModule, MatCheckboxModule, FormsModule, NgClass, CommonModule, MatDialogModule, Nav, Footer],
+  imports: [MatInputModule, MatFormFieldModule, MatIconModule, MatCardModule, MatCheckboxModule, FormsModule, NgClass, CommonModule, MatDialogModule],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.scss',
 })
@@ -59,7 +59,7 @@ delete(index: number): void {
         currentList.filter((_, i) => i !== index)
       );
       
-      console.log('تم المسح بنجاح من المصفوفة!');
+      console.log('deleted');
     }
   });
 }

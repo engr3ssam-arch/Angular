@@ -2,7 +2,7 @@
   <div class="container-fluid d-flex">
     <div >
     <a class="navbar-brand" href="#">
-        <img  class="img-style " src="/images/AngularLogoGradient.webp" alt="home-logo">
+     <img  class="img-style " src="/images/AngularLogoGradient.webp" alt="home-logo">
     </a>
     </div>
     <div>
@@ -11,12 +11,8 @@
     </button>
     <div class="collapse navbar-collapse" [class.show]="!isMenuCollapsed" id="navbarNav">
        <ul class="navbar-nav">
-      @if (isLogin ===true) {
-       
-        <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" routerLink="/home" routerLinkActive="border border-primary" >Home</a>
-        </li>
-        <li class="nav-item">
+           
+      <li class="nav-item">
           <a class="nav-link text-white" routerLink="/todo list" routerLinkActive="border border-primary">ToDo List</a>
         </li>
         <li class="nav-item">
@@ -25,16 +21,7 @@
         <li class="nav-item">
           <a class="nav-link Disabled text-white" aria-disabled="true">Task 3</a>
         </li>
-       
-      }@else if (isLogin === false)  { 
-         <li class="nav-item">
-          <a class="nav-link active text-white"routerLink="/login" routerLinkActive="border border-primary" >LOGIN</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link active text-white " routerLink="/register" routerLinkActive="border border-primary">REGISTER</a>
-        </li>
-      }
-      
+           
        
       </ul>
     </div>

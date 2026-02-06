@@ -1,14 +1,15 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TodoList } from './Todo_List/components/todo-list/todo-list';
-import { Home } from "./features/components/home/home";
-import { NotFound } from "./features/components/not-found/not-found";
+import { NotFound } from '@angular/core/primitives/di';
+import { Nav } from "./shared/components/nav/nav";
+import { Footer } from './shared/components/footer/footer';
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [ RouterOutlet],
+  imports: [Nav, Footer, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
