@@ -1,0 +1,13 @@
+ @if (isEditMode()) {
+  <div class="error-container editing">
+    <p>Editing Mode</p>
+  </div>
+}
+
+   <mat-form-field appearance="outline" class="full-width">
+  <mat-label>Describe What to do?</mat-label>
+  <input matInput [(ngModel)]="value" (keyup.enter)="submit()">
+  <mat-icon matSuffix (click)="submit()" style="cursor: pointer;">
+    {{ isEditMode() ? 'save_as' : 'save' }}
+  </mat-icon>
+</mat-form-field>

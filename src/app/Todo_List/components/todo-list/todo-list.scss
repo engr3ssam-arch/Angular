@@ -7,29 +7,14 @@
 .card-layout{
     width: 550px;
 }
-mat-form-field{
- width: 90%;
-display: block;
-margin: auto;
-}
+
 mat-card-header{
     display: flex;
     justify-content: center;
     padding-bottom: 20px;
 }
-.listing{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.error-container{
-    display: flex;
-    justify-content: center;
-    p{
-        color: red;
-    }
-}
-.crossover{
-    text-decoration: line-through;
 
-}
+
+
+
+

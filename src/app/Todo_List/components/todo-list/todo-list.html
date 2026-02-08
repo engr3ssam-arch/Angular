@@ -1,53 +1,54 @@
-<div class="container">
-<mat-card appearance="outlined" class="card-layout">
-  <mat-card-header>
-    
-    <mat-label>ToDo List</mat-label>
-    </mat-card-header>
+<div class="page-wrapper">
   
-@if (selectedIndex >=0) {
-  <div class="error-container">
-   <p>Editing Mode</p>
-  </div>
-}
-  <mat-form-field appearance="outline">
-    <mat-label>Describe What to do ?</mat-label>
-    <input matInput placeholder="Describe What to do ?" [(ngModel)]="description">
+<app-todo-search (searchChange)="onSearch($event)"></app-todo-search>
 
-@if(selectedIndex >= 0) {
-  <mat-icon matSuffix (click)="update()">save_as</mat-icon>
-} @else {
-  <mat-icon matSuffix (click)="save()">save</mat-icon>
-}
-    
-     </mat-form-field>
-     @for (item of todoList(); track item.id; let i= $index) {
-       <div class="listing">
-      <div>
-      <mat-checkbox (click)="checkedChanged(i)" [disabled]="selectedIndex>=0" >
-         <span [ngClass]="item.done ? 'crossover' : ''">{{item.description}}</span>
-      </mat-checkbox>
-      </div>
-      <div>
-        @if (!item.done) {
-        <mat-icon matSuffix (click)="editItem(i,item)"  >edit</mat-icon>
+
+  @if (searchTerm()) {
+
+      <div class="search-info">
+
+        @if (filteredTodoList().length > 0) {
+
+          <span ><p style="text-align: center;">Found {{ filteredTodoList().length }} results for "{{ searchTerm() }}"</p></span>
+
+        } @else {
+
+          <span><p style="text-align: center;">No results match your search!</p></span>
+
         }
-        
-        <mat-icon matSuffix (click)="delete(i)">delete</mat-icon>
+
       </div>
-     </div>
-     }@empty {
-      <div class="error-container">
-      <p>
-       No Records Added
-      </p>
-      </div>
-     }
-    
-  </mat-card>
+
+    }
+
+    <main class="main-content">
+    <div class="container">
+      <mat-card appearance="outlined" class="card-layout">
+        <mat-card-header>
+          <mat-label class="title">ToDo List</mat-label>
+        </mat-card-header>
+
+      <app-todo-form
+    [isEditMode]="selectedIndex>= 0" 
+      [(value)]="description"
+     (onAction)="selectedIndex>= 0 ? update() : save()">
+   </app-todo-form>
+
+        @for (item of filteredTodoList(); track item.id; let i = $index) {
+    <app-todo-items
+       [item]="item" 
+      [isEditDisabled]="selectedIndex >= 0"
+      (onEdit)="editItem(i, item)"
+      (onDelete)="delete(i)"
+      (onToggle)="checkedChanged(i)">
+    </app-todo-items>
+        } @empty {
+          <div class="error-container">
+            <p>No Records Found</p>
+          </div>
+        }
+      </mat-card>
+    </div>
+  </main>
+
 </div>
-
-  
-
-
-

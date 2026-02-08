@@ -1,0 +1,11 @@
+ <div class="listing">
+            <mat-checkbox (click)="onToggle.emit()" [disabled]="isEditDisabled()">
+              <span [ngClass]="item().done ? 'crossover' : ''">{{item().description}}</span>
+            </mat-checkbox>
+            <div class="actions">
+              @if (!item().done) {
+                <mat-icon (click)="onEdit.emit()">edit</mat-icon>
+              }
+              <mat-icon (click)="onDelete.emit()">delete</mat-icon>
+            </div>
+          </div>
