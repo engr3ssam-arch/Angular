@@ -2,25 +2,6 @@
   
 <app-todo-search (searchChange)="onSearch($event)"></app-todo-search>
 
-
-  @if (searchTerm()) {
-
-      <div class="search-info">
-
-        @if (filteredTodoList().length > 0) {
-
-          <span ><p style="text-align: center;">Found {{ filteredTodoList().length }} results for "{{ searchTerm() }}"</p></span>
-
-        } @else {
-
-          <span><p style="text-align: center;">No results match your search!</p></span>
-
-        }
-
-      </div>
-
-    }
-
     <main class="main-content">
     <div class="container">
       <mat-card appearance="outlined" class="card-layout">

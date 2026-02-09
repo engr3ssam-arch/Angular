@@ -28,6 +28,29 @@ html, body {
 // }
 .footer {
   
+  position:static;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+ 
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  
+}
+
+
+
+
+.footer {
+  
   position:sticky;
   left: 0;
   bottom: 0;
@@ -37,7 +60,7 @@ html, body {
 .page-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+   min-height: 100vh;
 }
 
 
