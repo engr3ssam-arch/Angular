@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup, ɵInternalFormsSharedModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
-  imports: [],
+  imports: [ɵInternalFormsSharedModule],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
@@ -17,19 +17,38 @@ export class Register {
   ngOnInit(): void {
 
     this.registerForm = new FormGroup({
-      firstName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      lastName: new FormControl(null, [Validators.required]),
+      firstName: new FormControl(null, [Validators.required, Validators.minLength(3),Validators.maxLength(20)]),
+      lastName: new FormControl(null, [Validators.required, Validators.minLength(3),Validators.maxLength(20)]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{5,10}$/)]),
-      rePassword: new FormControl(null, [Validators.required]),
+      rePassword: new FormControl(null, [Validators.required ,Validators.pattern(/^[A-Z][a-z0-9]{5,10}$/)]),
       description: new FormControl(null)
-    });
+    },  {validators:this.confirmpassword} );
+
+
   }
 
-  Register() {
+ 
+   confirmpassword(group:AbstractControl){
+
+   let password =  group.get('password')?.value
+   let rePassword = group.get('repassword')?.value 
+   if (password === rePassword ) {
+    return null;
     
+   }else{
+    return {mismatch:true}
+   }
+ }
+
+
+
+  Register() {
+     if(this.registerForm.valid){
       console.log('Resister', this.registerForm.value);
        this.router.navigate(['todo list']);
+     }
+      
   }
 
 }

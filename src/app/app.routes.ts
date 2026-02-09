@@ -12,7 +12,7 @@ export const routes: Routes = [
 
     { path: 'todo list', component:TodoList ,title:"todo list" },
     {path:'login',component:Login ,title:"login"} ,
-    { path: 'forget password',component:ForgetPassword },
+    { path: 'forget password',component:ForgetPassword ,title:"Forget Password"},
     {path:'register', component:Register ,title:"register"},
     {path: '**' ,component:NotFound ,title:"Not found"},
     { path: '', redirectTo: 'todo list', pathMatch: 'full' }
