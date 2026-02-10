@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormGroup, ɵInternalFormsSharedModule } from '@angular/forms';
+import { AbstractControl, FormGroup, ReactiveFormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
-  imports: [ɵInternalFormsSharedModule],
+  imports: [ɵInternalFormsSharedModule ,ReactiveFormsModule],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
