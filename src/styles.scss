@@ -35,3 +35,16 @@ html, body {
         color: red;
     }
 }
+
+@media (max-width: 768px) {
+  .card {
+    margin: 10px !important;
+    padding: 10px !important;
+  }
+ h1, p {
+    font-size: 1.5rem; 
+  }
+  img{
+    width: 50px;
+  }
+  }
