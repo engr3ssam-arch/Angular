@@ -13,18 +13,10 @@ html {
     density: 0,
   ));
 }
-:host {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-html, body {
-  height: 100%;
-}
-
-.main-content {
-  flex: 1;
+footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 
