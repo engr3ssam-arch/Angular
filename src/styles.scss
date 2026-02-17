@@ -19,7 +19,14 @@ footer{
     bottom: 0;
 }
 
-
+.layout{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.content{
+  flex:1;
+  }
 .error-container{
     display: flex;
     justify-content: center;
@@ -38,5 +45,6 @@ footer{
   }
   img{
     width: 50px;
+    
   }
   }

@@ -5,12 +5,12 @@
      <img  class="img-style " src="/images/AngularLogoGradient.webp" alt="home-logo">
     </a>
     </div>
-    <div>
+    <div class="d-flex flex-column align-items-end position-relative">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" [class.show]="!isMenuCollapsed" id="navbarNav">
-       <ul class="navbar-nav">
+    <div class="collapse navbar-collapse " [class.show]="!isMenuCollapsed" id="navbarNav">
+       <ul class="navbar-nav d-flex flex-row gap-3">
            
       <li class="nav-item">
           <a class="nav-link text-white" routerLink="/todo list" routerLinkActive="border border-primary">ToDo List</a>
