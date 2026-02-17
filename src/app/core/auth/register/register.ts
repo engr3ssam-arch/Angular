@@ -32,7 +32,8 @@ export class Register {
    confirmpassword(group:AbstractControl){
 
    let password =  group.get('password')?.value
-   let rePassword = group.get('repassword')?.value 
+   let rePassword = group.get('rePassword')?.value 
+   console.log('Pass:', password, 'RePass:', rePassword);
    if (password === rePassword ) {
     return null;
     

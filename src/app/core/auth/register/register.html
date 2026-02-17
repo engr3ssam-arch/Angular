@@ -80,6 +80,13 @@
 <div class="p-3">
 <label for="inputPassword5" class="form-label">Re Password</label>
 <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" formControlName="rePassword">
+@if (registerForm.hasError('mismatch') && registerForm.get('rePassword')?.touched) {
+    <div class="d-flex">
+      <ul class="text-danger">
+        <li>Passwords do not match!</li>
+      </ul>
+    </div>
+  }
 </div>
 <div class="p-3">
   <label for="exampleFormControlTextarea1" class="form-label">Description</label>
