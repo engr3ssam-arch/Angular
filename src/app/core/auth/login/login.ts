@@ -20,10 +20,12 @@ loginForm :FormGroup ;
   }
 
   onSubmit() {
+     if(this.loginForm.valid){
      console.log('Login Data:', this.loginForm.value);
       
       this.router.navigate(['todo list']);
-    
+     }
   }
-
+ 
+    
 }
