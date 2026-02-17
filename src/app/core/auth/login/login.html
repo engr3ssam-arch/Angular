@@ -1,19 +1,19 @@
 <div class="container">
  <div class="card m-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
 <h1 class="text-center py-4 fw-bold">LOGIN</h1>
- <form>
+ <form [formGroup]="loginForm">
 <div class="mb-3 p-3">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" formControlName="email">
 </div>
 <div class="p-3">
 <label for="inputPassword5" class="form-label">Password</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" formControlName="password">
 </div>
 <div>
     <a routerLink="/forget password" class="p-3">Forget Password</a>
 </div>
-<button class="btn btn-secondary d-block m-auto my-4" (click)="onSubmit()">LOGIN</button>
+<button class="btn btn-secondary d-block m-auto my-4" type="submit" (click)="onSubmit()">LOGIN</button>
 </form>
 </div>
 </div>
