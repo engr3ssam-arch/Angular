@@ -8,22 +8,19 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
 
 private readonly STORAGE_KEY = 'registerUser';
-private usersSubject = new BehaviorSubject<any[]>(this.getStoredUsers());
+private usersSubject = new BehaviorSubject<any[]>([]);
 users$ = this.usersSubject.asObservable();
+private currentUserSubject = new BehaviorSubject<User | null>(null);
+  currentUser$ = this.currentUserSubject.asObservable();
 
-   private getStoredUsers(): any[] {
-    const data = localStorage.getItem(this.STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
-  }
-
+  
 
 
  registerUser(userData: User) {
-    
     const currentUsers = this.usersSubject.value;
     const updatedUsers = [...currentUsers, userData];
     this.usersSubject.next(updatedUsers);
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(updatedUsers));
+   
    
   }
   
@@ -33,11 +30,11 @@ constructor() { }
   const users = this.usersSubject.value;
     const foundUser = users.find((u: any) => 
       u.email === credentials.email && u.password === credentials.password
+    
     );
-
     if (foundUser) {
-      localStorage.setItem('currentUser', JSON.stringify(foundUser));
-      return { success: true, user: foundUser };
+      this.currentUserSubject.next(foundUser);
+       return { success: true, user: foundUser };
     }
 
     return { success: false };
