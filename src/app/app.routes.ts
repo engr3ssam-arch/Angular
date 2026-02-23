@@ -15,7 +15,7 @@ export const routes: Routes = [
     { path: 'forget password',component:ForgetPassword ,title:"Forget Password"},
     {path:'register', component:Register ,title:"register"},
     {path: '**' ,component:NotFound ,title:"Not found"},
-    { path: '', redirectTo: 'todo list', pathMatch: 'full' }
+    { path: '', redirectTo: 'login', pathMatch: 'full' }
    
     
 

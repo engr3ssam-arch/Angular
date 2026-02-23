@@ -60,7 +60,7 @@ export class Register {
 
     console.log('User Object:', userObj);
     this._authService.registerUser(userObj);
-     this._router.navigate(['/todo list']); 
+     this._router.navigate(['/login']); 
   } else {
     this.registerForm.markAllAsTouched();
   }
