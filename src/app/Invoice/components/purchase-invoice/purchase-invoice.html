@@ -1,0 +1,46 @@
+<form [formGroup]="invoiceForm">
+<div class="container mt-4 card shadow p-3 mb-5 bg-body-tertiary rounded">
+  <h3>Purchase Invoice</h3>
+  <div class="form-group d-flex gap-5 mb-5">
+   <input class="form-control" type="text" placeholder="Invoice Number" aria-label="default input example" formControlName="invoiceNo">
+    <input class="form-control" type="text" placeholder="Customer Name" aria-label="default input example" formControlName="customerName">
+    <input class="form-control" type="text" placeholder="Phone Number" aria-label="default input example" formControlName="customerPhone">
+    <input class="form-control" type="text" placeholder="Address" aria-label="default input example" formControlName="Address">
+  </div>
+
+  <table class="table table-border">
+    <thead class="table-primary text-center">
+        <tr>
+            <td>No </td>
+            <td>Product Code</td>
+            <td>Description</td>
+            <td>Quantity</td>
+            <td>Price</td>
+            <td>Total</td>
+            <td>Action</td>
+        </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of products.controls ; let i= index" [formGroupName]="i">
+         <td>{{i +1}}</td>
+         <td><select class="form-control" formControlName="productCode"></select></td>
+          <td><input class="form-control" formControlName="productDescription"/></td>
+          <td><input type="number" class="form-control" formControlName="qty"/></td>
+          <td><input type="number" class="form-control" formControlName="price"/></td>
+          <td><input class="form-control" formControlName="total" readonly/></td>
+          <td class="text-center">
+          <button class="btn btn-danger btn-sm" (click)="removeProduct(i)"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>  
+    </tbody>
+  <tfoot>
+    <tr>
+        <td colspan="7">
+            <a (click)=" addNewProduct()" class="btn btn-success">[+]</a>
+        </td>
+    </tr>
+  </tfoot>
+  </table>
+</div>
+</form>
