@@ -1,0 +1,15 @@
+.invoice-summary{
+    text-align: right; 
+    margin-top: 20px;
+    label{
+        font-weight: bold; 
+        margin-right: 10px;
+    }
+    input{
+        font-weight: bold;
+         background-color: #f8f9fa;
+         border: 1px solid #ddd;
+         padding: 5px;
+         width: 150px;
+    }
+}

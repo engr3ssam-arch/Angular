@@ -43,7 +43,7 @@ export class Invoice {
       total: this.builder.control({ value: 0, disabled: true })
     });
   }
-
+  
 calculateRowTotal(index: number) {
   const row = this.products.at(index);
   const qty = row.get('qty')?.value || 0;
@@ -55,12 +55,21 @@ calculateRowTotal(index: number) {
     total: rowTotal
   });
 
+ this.calculateGrandTotal();
 }
 
+calculateGrandTotal() {
+  const totalSum = this.products.controls
+    .map(control => control.get('total')?.value || 0)
+    .reduce((acc, curr) => acc + curr, 0);
 
+  this.invoiceForm.patchValue({
+    total: totalSum
+  });
+}
 
   removeProduct(index: number) {
     this.products.removeAt(index);
-   
+    this.calculateGrandTotal();
   }
 }
