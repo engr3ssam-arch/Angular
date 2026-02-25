@@ -44,7 +44,23 @@ export class Invoice {
     });
   }
 
+calculateRowTotal(index: number) {
+  const row = this.products.at(index);
+  const qty = row.get('qty')?.value || 0;
+  const price = row.get('price')?.value || 0;
+  
+  const rowTotal = qty * price;
+
+   row.patchValue({
+    total: rowTotal
+  });
+
+}
+
+
+
   removeProduct(index: number) {
     this.products.removeAt(index);
+   
   }
 }
