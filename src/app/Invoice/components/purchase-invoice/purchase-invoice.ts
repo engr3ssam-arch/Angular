@@ -29,10 +29,29 @@ export class Invoice {
     return this.invoiceForm.get('details') as FormArray;
   }
 
-  addNewProduct() {
-   
-    this.products.push(this.generateRow());
+ ngOnInit() {
+
+ if (this.products.length === 0) {
+    this.addNewProduct();
   }
+  }
+
+  addNewProduct() {
+  let lastGroup = this.products.at(this.products.length - 1) as FormGroup;
+
+  if (lastGroup) {
+    let values = lastGroup.value;
+    
+    if (!values.productCode || !values.productDescription || values.qty <= 0) {
+      alert("You Must Add the Current Row");
+      return;
+    }
+  }
+
+ 
+  this.products.push(this.generateRow());
+}
+ 
 
   generateRow() {
     return this.builder.group({
