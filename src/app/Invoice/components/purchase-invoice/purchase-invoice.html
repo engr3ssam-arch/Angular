@@ -24,7 +24,7 @@
     <tbody formArrayName="details">
       <tr *ngFor="let item of products.controls ; let i= index" [formGroupName]="i">
          <td>{{i +1}}</td>
-         <td><select class="form-control" formControlName="productCode"></select></td>
+         <td><input class="form-control" formControlName="productCode"/></td>
           <td><input class="form-control" formControlName="productDescription"/></td>
           <td><input type="number" class="form-control" formControlName="qty" (input)="calculateRowTotal(i)"/></td>
           <td><input type="number" class="form-control" formControlName="price" (input)="calculateRowTotal(i)"/></td>

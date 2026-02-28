@@ -34,6 +34,7 @@ export class Invoice {
  if (this.products.length === 0) {
     this.addNewProduct();
   }
+  
   }
 
   addNewProduct() {
