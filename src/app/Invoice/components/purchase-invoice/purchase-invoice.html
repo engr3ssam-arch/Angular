@@ -11,11 +11,12 @@
  <div [formGroup]="invoiceForm">
   <div class="row font-weight-bold bg-primary text-white text-center p-2 border-bottom">
     <div class="col-1">#</div>
-    <div class="col-3">Product Code</div>
-    <div class="col-3">Description</div>
+    <div class="col-2">Product Code</div>
+    <div class="col-2">Product Name</div>
     <div class="col-1">Qty</div>
     <div class="col-2">Price</div>
-    <div class="col-2">Action</div>
+    <div class="col-2">Total</div>
+    <div class="col-1">Action</div>
   </div>
 
   <div formArrayName="details" class="text-center">
@@ -23,12 +24,18 @@
       
       <div class="col-1">{{i + 1}}</div>
       
-      <div class="col-3">
-        <input class="form-control" formControlName="productCode"/>
+      <div class="col-2">
+       <select class="form-control" formControlName="id" (change)="onProductChange(i)">
+       <option value="" disabled selected>Select Product</option>
+    
+       <option *ngFor="let prod of productList" [value]="prod.productId">
+      {{prod.productId}} 
+      </option>
+      </select>
       </div>
       
-      <div class="col-3">
-        <input class="form-control" formControlName="productDescription" />
+      <div class="col-2">
+        <input class="form-control" formControlName="name" readonly />
       </div>
       
       <div class="col-1">
@@ -36,14 +43,20 @@
       </div>
       
       <div class="col-2">
-        <input type="number" class="form-control" formControlName="price" (input)="calculateRowTotal(i)"/>
+        <input type="number" class="form-control" formControlName="price" (input)="calculateRowTotal(i)" readonly/>
       </div>
-      
+
       <div class="col-2">
+         <input type="number" class="form-control" formControlName="total" (input)="calculateRowTotal(i)"/>
+    
+      </div>
+
+      <div class="col-1">
         <button type="button" class="btn btn-danger btn-sm " (click)="removeProduct(i)">
           <i class="fa fa-trash text-center"></i>
         </button>
       </div>
+       
     </div>
   </div>
 

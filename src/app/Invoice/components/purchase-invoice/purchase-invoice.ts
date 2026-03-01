@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, Validators,FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgFor, CommonModule } from '@angular/common';
+import { Products } from '../../../shared/interface/products';
+import { ProductService } from '../../service/product-service';
 
 @Component({
   selector: 'app-invoice',
@@ -12,8 +14,10 @@ export class Invoice {
  
   invoiceForm!: FormGroup; 
   invoiceDetail!: FormArray;
+  productList: Products[] = [];
 
-  constructor(private builder: FormBuilder) {
+
+  constructor(private productService: ProductService,private builder: FormBuilder) {
     this.invoiceForm = this.builder.group({
       invoiceNo: this.builder.control('', Validators.required),
       customerName: this.builder.control(''),
@@ -31,10 +35,13 @@ export class Invoice {
 
  ngOnInit() {
 
- if (this.products.length === 0) {
-    this.addNewProduct();
-  }
-  
+ this.productService.getProducts().subscribe(data => {
+      this.productList = data;
+    });
+
+    if (this.products.length === 0) {
+      this.addNewProduct();
+    }
   }
 
   addNewProduct() {
@@ -43,7 +50,7 @@ export class Invoice {
   if (lastGroup) {
     let values = lastGroup.value;
     
-    if (!values.productCode || !values.productDescription || values.qty <= 0) {
+    if (!values.id || !values.name || values.qty <= 0) {
       alert("You Must Add the Current Row");
       return;
     }
@@ -56,8 +63,8 @@ export class Invoice {
 
   generateRow() {
     return this.builder.group({
-      productCode: this.builder.control('', Validators.required),
-      productDescription: this.builder.control('', Validators.required),
+      id: this.builder.control('', Validators.required),
+      name: this.builder.control('', Validators.required),
       qty: this.builder.control(1),
       price: this.builder.control(0),
       total: this.builder.control({ value: 0, disabled: true })
@@ -91,5 +98,20 @@ calculateGrandTotal() {
   removeProduct(index: number) {
     this.products.removeAt(index);
     this.calculateGrandTotal();
+  }
+
+
+  onProductChange(index: number) {
+   let row = this.products.at(index);
+    let selectId = row.get('id')?.value;
+    let selectedProduct = this.productService.getProductById(selectId);
+
+    if (selectedProduct) {
+      row.patchValue({
+       name: selectedProduct.productName,
+       price: selectedProduct.productPrice
+      });
+      this.calculateRowTotal(index);
+    }
   }
 }
