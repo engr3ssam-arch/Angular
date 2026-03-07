@@ -20,11 +20,11 @@ export class Invoice {
   constructor(private productService: ProductService,private builder: FormBuilder) {
     this.invoiceForm = this.builder.group({
       invoiceNo: this.builder.control('', Validators.required),
-      customerName: this.builder.control(''),
-      customerPhone: this.builder.control(''),
-      address: this.builder.control(''),
+      customerName: this.builder.control('', Validators.required),
+      customerPhone: this.builder.control('', Validators.required),
+      address: this.builder.control('', Validators.required),
       total: this.builder.control({ value: 0, disabled: true }),
-      details: this.builder.array([])
+      details: this.builder.array([], Validators.required)
     });
   }
 
@@ -65,8 +65,8 @@ export class Invoice {
     return this.builder.group({
       id: this.builder.control('', Validators.required),
       name: this.builder.control('', Validators.required),
-      qty: this.builder.control(1),
-      price: this.builder.control(0),
+      qty: this.builder.control(1, Validators.required),
+      price: this.builder.control(0, Validators.required),
       total: this.builder.control({ value: 0, disabled: true })
     });
   }
