@@ -114,4 +114,17 @@ calculateGrandTotal() {
       this.calculateRowTotal(index);
     }
   }
+
+
+
+
+
+
+  getFilteredProducts(index: number): Products[] {
+   let selectedId = this.products.controls
+    .map((control, i) => i !== index ? control.get('id')?.value : null)
+    .filter(id => id !== null);
+
+  return this.productList.filter(product => !selectedId.includes(product.productId));
+}
 }

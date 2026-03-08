@@ -28,7 +28,7 @@
        <select class="form-control" formControlName="id" (change)="onProductChange(i)">
        <option value="" disabled selected>Select Product</option>
     
-       <option *ngFor="let prod of productList" [value]="prod.productId">
+       <option *ngFor="let prod of getFilteredProducts(i)" [value]="prod.productId">
       {{prod.productId}} 
       </option>
       </select>

@@ -28,4 +28,14 @@ export class ProductService {
   getProductById(id: string): Products | undefined {
     return this.product.find(p => p.productId === id);
   }
+
+
+
+
+
+
+
+
+
+  
 }
