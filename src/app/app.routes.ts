@@ -6,6 +6,7 @@ import { Login } from './core/auth/login/login';
 import { Register } from './core/auth/register/register';
 import { ForgetPassword } from './core/auth/forget-password/forget-password';
 import { Invoice } from './Invoice/components/purchase-invoice/purchase-invoice';
+import { PurchaseDialog } from './Purchase/components/purchase-dialog/purchase-dialog/purchase-dialog';
 
 
 

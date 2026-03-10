@@ -12,7 +12,7 @@ import { User } from '../../interface/user';
   styleUrl: './nav.scss',
 })
 export class Nav  {
- 
+ isPurchaseModalOpen = false;
 
   currentUser$: Observable<User| null>;
 
@@ -24,6 +24,9 @@ export class Nav  {
   isMenuCollapsed = true;
   toggleNavbar() {
     this.isMenuCollapsed = !this.isMenuCollapsed;
+  }
+  toggleModal() {
+    this.isPurchaseModalOpen = !this.isPurchaseModalOpen;
   }
 
 }
