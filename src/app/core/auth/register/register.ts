@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 import { User } from '../../../shared/interface/user';
-import { DataService } from '../../dataServices/data-service';
+import { DataService } from '../../services/dataServices/data-service';
 @Component({
   selector: 'app-register',
   imports: [ɵInternalFormsSharedModule ,ReactiveFormsModule],

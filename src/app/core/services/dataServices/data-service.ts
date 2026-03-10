@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../shared/interface/user';
+import { User } from '../../../shared/interface/user';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

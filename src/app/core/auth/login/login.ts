@@ -3,7 +3,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { Validators } from '@angular/forms';
-import { DataService } from '../../dataServices/data-service';
+import { DataService } from '../../services/dataServices/data-service';
 
 
 
