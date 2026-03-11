@@ -6,7 +6,7 @@ import { Login } from './core/auth/login/login';
 import { Register } from './core/auth/register/register';
 import { ForgetPassword } from './core/auth/forget-password/forget-password';
 import { Invoice } from './Invoice/components/purchase-invoice/purchase-invoice';
-import { PurchaseDialog } from './Purchase/components/purchase-dialog/purchase-dialog/purchase-dialog';
+import { PurchaseStepper } from './Purchase/components/purchase-stepper/purchase-stepper';
 
 
 
@@ -14,6 +14,7 @@ export const routes: Routes = [
 
     { path: 'todo list', component:TodoList ,title:"todo list" },
     { path: 'invoice', component:Invoice ,title:"Purchase Invoice" },
+    { path: 'purchase/:type', component: PurchaseStepper },
     {path:'login',component:Login ,title:"login"} ,
     { path: 'forget password',component:ForgetPassword ,title:"Forget Password"},
     {path:'register', component:Register ,title:"register"},

@@ -21,74 +21,9 @@
         </li>  
        <li class="nav-item">
           <a class="nav-link text-white" [ngClass]="{'border border-primary': isPurchaseModalOpen}" (click)="toggleModal()">Purchase</a>
-        </li>  
-      <div class="modal-overlay" *ngIf="isPurchaseModalOpen" (click)="toggleModal()">
-      <div class="modal-header">
-      <h3>Purchase</h3>
-      <span class="close-icon" (click)="toggleModal()"><i class="fa-solid fa-x"></i></span>
-    </div>
-    
-    <p class="subtitle">Select Product Type</p>
-    
-   <div class="container">
-  <div class="row g-3">
-     <div class="col-6">
-      <div class="card p-3 border-rounded shadow-sm">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-sim-card me-3 text-danger fs-5"></i>
-            <span class="fw-bold">Voice SIM</span>
-          </div>
-          <input class="form-check-input red-radio " type="radio" name="product" id="voice" checked>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <div class="card p-3 border-rounded shadow-sm">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-wifi me-3 text-danger fs-5"></i>
-            <span class="fw-bold">Data SIM</span>
-          </div>
-          <input class="form-check-input red-radio " type="radio" name="product" id="data">
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <div class="card p-3 border-rounded shadow-sm">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-land-mine-on  text-danger me-3 fs-5"></i>
-            <span class="fw-bold">Landline</span>
-          </div>
-          <input class="form-check-input red-radio " type="radio" name="product" id="landline">
-        </div>
-      </div>
-    </div>
-
-    <div class="col-6">
-      <div class="card p-3 border-rounded shadow-sm">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-house-signal me-3 text-danger fs-5"></i>
-            <span class="fw-bold">ADSL</span>
-          </div>
-          <input class="form-check-input red-radio " type="radio" name="product" id="adsl">
-        </div>
-      </div>
-    </div>
-
-  </div>
-
- </div>
-
-   <div class="d-flex justify-content-center mt-4 ">
-    <button class="btn btn-danger px-5 rounded-pill py-2 fw-bold">Proceed</button>
-  </div>
- 
-</div>     
+        </li> 
+     
+     
     <li class="nav-item d-flex align-items-center">
       <span class="nav-link fw-bold text-white d-flex align-items-center gap-2">
        <i class="fa-solid fa-circle-user text-white"></i>
@@ -109,3 +44,73 @@
   </div>
   </div>
 </nav>
+
+ <div class="modal-overlay" *ngIf="isPurchaseModalOpen" (click)="toggleModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+      <h3>Purchase</h3>
+      <span class="close-icon" (click)="toggleModal()"><i class="fa-solid fa-x"></i></span>
+    </div>
+    
+    <p class="subtitle">Select Product Type</p>
+    
+   <div class="container">
+  <div class="row g-3">
+     <div class="col-6">
+      <div class="card p-3 border-rounded shadow-sm">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-sim-card me-3 text-danger fs-5"></i>
+            <span class="fw-bold">Voice SIM</span>
+          </div>
+          <input class="form-check-input red-radio " type="radio" name="product" id="voice" checked value="voice" [(ngModel)]="selectedType">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card p-3 border-rounded shadow-sm">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-wifi me-3 text-danger fs-5"></i>
+            <span class="fw-bold">Data SIM</span>
+          </div>
+          <input class="form-check-input red-radio " type="radio" name="product" id="data" value="data" [(ngModel)]="selectedType">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card p-3 border-rounded shadow-sm">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-land-mine-on  text-danger me-3 fs-5"></i>
+            <span class="fw-bold">Landline</span>
+          </div>
+          <input class="form-check-input red-radio " type="radio" name="product" id="landline" value="landline" [(ngModel)]="selectedType">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card p-3 border-rounded shadow-sm">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-house-signal me-3 text-danger fs-5"></i>
+            <span class="fw-bold">ADSL</span>
+          </div>
+          <input class="form-check-input red-radio " type="radio" name="product" id="adsl" value="adsl" [(ngModel)]="selectedType">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+ </div>
+
+   <div class="d-flex justify-content-center mt-4 ">
+    <button class="btn btn-danger px-5 rounded-pill py-2 fw-bold" (click)="
+ onProceed()">Proceed</button>
+  </div>
+ </div>
+</div>     

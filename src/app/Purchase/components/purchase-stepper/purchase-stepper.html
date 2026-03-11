@@ -1,0 +1,61 @@
+<div class="container mt-5">
+  <h3 class="fw-bold mb-4">{{ pageTitle }}</h3>
+
+  <div class="stepper-card card shadow-sm p-5">
+    
+    <div class="stepper-wrapper d-flex justify-content-between position-relative mb-5">
+      <div class="line"></div>
+       <div class="step-item text-center active">
+        <div class="step-dot"></div>
+        <div class="step-label">{{ productType === 'landline' ? 'Purchase Type' : 'Setup Options' }}</div>
+      </div>
+      <div class="step-item text-center">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Dial</div>
+      </div>
+      <div class="step-item text-center">
+        <div class="step-dot"></div>
+        <div class="step-label">Customer Info</div>
+      </div>
+      <div class="step-item text-center">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Plan</div>
+      </div>
+      <div class="step-item text-center">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Bundle</div>
+      </div>
+    </div>
+
+    <div class="step-content">
+      
+      <div *ngIf="productType === 'voice'" class="mb-4">
+        <p class="fw-bold">Choose SIM Type</p>
+        <div class="d-flex gap-5">
+          <label class="d-flex align-items-center gap-2">
+            <input type="radio" name="sim" class="red-radio" checked> Row
+          </label>
+          <label class="d-flex align-items-center gap-2">
+            <input type="radio" name="sim" class="red-radio"> Pre-Activate
+          </label>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <p class="fw-bold">Choose Reservation Type</p>
+        <div class="d-flex gap-5">
+          <label class="d-flex align-items-center gap-2">
+            <input type="radio" name="res" class="red-radio" checked> Pool Selection
+          </label>
+          <label class="d-flex align-items-center gap-2">
+            <input type="radio" name="res" class="red-radio"> Manual Input
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end mt-5">
+      <button class="btn btn-danger px-5 rounded-pill fw-bold py-2">Next</button>
+    </div>
+  </div>
+</div>
