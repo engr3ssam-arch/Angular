@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-purchase-stepper',
-  imports: [NgIf],
+  imports: [NgIf ],
   templateUrl: './purchase-stepper.html',
   styleUrl: './purchase-stepper.scss',
 })
 export class PurchaseStepper implements OnInit{
   productType: string = '';
   pageTitle: string = '';
-
-  constructor(private route: ActivatedRoute) {}
+   selectedType: string = '';
+    isPurchaseModalOpen = false;
+  constructor(private route: ActivatedRoute ,private router:Router) {}
 
   ngOnInit(): void {
    
@@ -36,4 +38,10 @@ export class PurchaseStepper implements OnInit{
     }
   }
 
+
+  onNext() {
+   
+      this.router.navigate(['/choose dial']);
+    }
+ 
 }

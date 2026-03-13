@@ -1,0 +1,88 @@
+/* الكارت الرئيسي الكبير */
+.main-card {
+  border-radius: 20px;
+  border: 1px solid #f2f2f2;
+}
+
+/* --- تنسيق الـ Stepper --- */
+.stepper-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.line {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-top: 2px dashed #eee;
+  z-index: 1;
+}
+
+.step-item {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.step-dot {
+  width: 30px;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  border: 4px solid #fff; /* عشان الخط ميبانش من جواها */
+}
+
+.step-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* ألوان الـ Stepper */
+.step-item.active .step-dot { background-color: #5bc0de !important; }
+.step-item.completed .step-dot { background-color: #7ed321 !important; }
+
+/* --- تنسيق الكروت --- */
+.dial-card {
+  border: 1px solid #f2f2f2 !important;
+  border-radius: 15px !important;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.selected-card {
+  border: 2px solid #e80000 !important;
+  background-color: #fffafa !important;
+}
+
+.custom-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-checkbox:checked {
+  background-color: #e80000;
+  border-color: #e80000;
+}
+
+/* --- الأزرار --- */
+.btn-next {
+  background-color: #fce4e4; /* باهت عند التعطيل */
+  border: none;
+}
+
+.btn-next:enabled {
+  background-color: #e80000; /* أحمر صريح عند الاختيار */
+}
+
+.btn-outline-danger {
+  border-width: 2px;
+}

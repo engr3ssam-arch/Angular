@@ -1,0 +1,70 @@
+<div class="container mt-5">
+<h3 class="fw-bold mb-4">{{  pageTitle }}</h3>
+
+  <div class="main-card card shadow-sm p-4 p-md-5">
+    
+    <div class="stepper-wrapper mb-5">
+      <div class="line"></div>
+      
+      <div class="step-item text-center" [class.completed]="currentStep > 1" [class.active]="currentStep === 1">
+        <div class="step-dot"></div>
+        <div class="step-label">Purchase Type</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 2" [class.active]="currentStep === 2">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Dial</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 3" [class.active]="currentStep === 3">
+        <div class="step-dot"></div>
+        <div class="step-label">Customer Info</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 4" [class.active]="currentStep === 4">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Plan</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 5" [class.active]="currentStep === 5">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Bundle</div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h6 class="fw-bold m-0">Choose From Reserved Dials</h6>
+      <button class="btn text-danger fw-bold border-0 p-0 small">Reserve Dial</button>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+      <div class="col" *ngFor="let dial of dialsList">
+        <div class="card dial-card shadow-sm border-0 p-3" 
+             [class.selected-card]="selectedDial === dial"
+             (click)="selectedDial = dial">
+          <div class="card-body p-0 d-flex justify-content-between align-items-center">
+            <div>
+              <h5 class="fw-bold mb-1">{{ dial.number }}</h5>
+              <p class="text-muted mb-0 small">
+                {{ dial.poolName }} <span class="mx-1 opacity-50">|</span> {{ dial.id }}
+              </p>
+            </div>
+            <div class="form-check p-0">
+              <input class="form-check-input custom-checkbox" type="checkbox" 
+                     [checked]="selectedDial === dial">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mt-5">
+      <button class="btn btn-outline-danger px-5 rounded-pill fw-bold py-2" (click)="onBack()">Back</button>
+      
+      <button class="btn btn-next px-5 rounded-pill fw-bold text-white py-2" 
+              [disabled]="!selectedDial"
+              (click)="onNext()">Next</button>
+    </div>
+
+  </div>
+</div>
