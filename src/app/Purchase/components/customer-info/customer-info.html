@@ -1,0 +1,114 @@
+<div class="container mt-5">
+<h3 class="fw-bold mb-4">{{  pageTitle }}</h3>
+
+  <div class="main-card card shadow-sm p-4 p-md-5">
+    
+    <div class="stepper-wrapper mb-5">
+      <div class="line"></div>
+      
+      <div class="step-item text-center" [class.completed]="currentStep > 1" [class.active]="currentStep === 1">
+        <div class="step-dot"></div>
+        <div class="step-label">Purchase Type</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 2" [class.active]="currentStep === 2">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Dial</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 3" [class.active]="currentStep === 3">
+        <div class="step-dot"></div>
+        <div class="step-label">Customer Info</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 4" [class.active]="currentStep === 4">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Plan</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 5" [class.active]="currentStep === 5">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Bundle</div>
+      </div>
+    </div>
+   <div *ngIf="currentStep === 3" class="form-container animate-fade">
+    <h5 class="fw-bold mb-4">Enter Consumer Information</h5>
+    
+    <div class="mb-4">
+      <p class="mb-2 fw-semibold">What Is Citizenship Status?</p>
+      <div class="d-flex gap-4">
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="citizenship" id="citizen" (change)="setCitizenship('citizen')">
+          <label class="form-check-label" for="citizen">Citizen</label>
+        </div>
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="citizenship" id="foreigner" (change)="setCitizenship('foreigner')">
+          <label class="form-check-label" for="foreigner">Foreigner</label>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="citizenshipStatus === 'citizen'" class="animate-fade">
+      <div class="row mb-3">
+        <div class="col-md-12"><p class="fw-semibold">What Is Customer Type?</p>
+          <div class="d-flex gap-4">
+            <label><input type="radio" name="type" checked> Consumer</label>
+            <label><input type="radio" name="type"> Corporate</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <p class="fw-bold">Get Customer Data</p>
+        <div class="row align-items-end g-2">
+          <div class="col-md-4">
+            <label class="form-label small">Dial Pattern</label>
+            <div class="input-group">
+              <select class="form-select w-25 bg-light"><option>National ID</option></select>
+              <input type="text" class="form-control w-75" placeholder="1234567890123">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-dark w-100">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="citizenshipStatus === 'foreigner'" class="animate-fade">
+      <p class="fw-bold border-bottom pb-2">Customer Information</p>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label small">Nationality</label>
+          <select class="form-select"><option>Egyptian</option></select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label small">Title</label>
+          <select class="form-select">
+            <option>MR.</option>
+              <option>MRS.</option>
+          </select>
+        </div>
+        <div class="col-12"></div>
+        <div class="col-md-4">
+          <label class="form-label small">First Name</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label small">Middle Name</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label small">Last Name</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+    <button class="btn btn-outline-danger px-5 rounded-pill" >Back</button>
+    <button class="btn btn-next px-5 rounded-pill text-white" [disabled]="!citizenshipStatus">Next</button>
+  </div>
+</div>
+</div>

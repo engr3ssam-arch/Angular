@@ -8,6 +8,7 @@ import { ForgetPassword } from './core/auth/forget-password/forget-password';
 import { Invoice } from './Invoice/components/purchase-invoice/purchase-invoice';
 import { PurchaseStepper } from './Purchase/components/purchase-stepper/purchase-stepper';
 import { ChooseDial } from './Purchase/components/choose-dial/choose-dial';
+import { CustomerInfo } from './Purchase/components/customer-info/customer-info';
 
 
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'invoice', component:Invoice ,title:"Purchase Invoice" },
     { path: 'purchase/:type', component: PurchaseStepper },
     { path: 'choose dial', component: ChooseDial },
+    { path: 'customer info', component:CustomerInfo },
     {path:'login',component:Login ,title:"login"} ,
     { path: 'forget password',component:ForgetPassword ,title:"Forget Password"},
     {path:'register', component:Register ,title:"register"},
