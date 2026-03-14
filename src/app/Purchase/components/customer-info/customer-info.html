@@ -108,7 +108,7 @@
 
   <div class="d-flex justify-content-between mt-5 pt-4 border-top">
     <button class="btn btn-outline-danger px-5 rounded-pill" >Back</button>
-    <button class="btn btn-next px-5 rounded-pill text-white" [disabled]="!citizenshipStatus">Next</button>
+    <button class="btn btn-next px-5 rounded-pill text-white" [disabled]="!citizenshipStatus" (click)="onNext()">Next</button>
   </div>
 </div>
 </div>

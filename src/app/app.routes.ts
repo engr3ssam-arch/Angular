@@ -9,6 +9,7 @@ import { Invoice } from './Invoice/components/purchase-invoice/purchase-invoice'
 import { PurchaseStepper } from './Purchase/components/purchase-stepper/purchase-stepper';
 import { ChooseDial } from './Purchase/components/choose-dial/choose-dial';
 import { CustomerInfo } from './Purchase/components/customer-info/customer-info';
+import { ChoosePlan } from './Purchase/components/choose-plan/choose-plan';
 
 
 
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'purchase/:type', component: PurchaseStepper },
     { path: 'choose dial', component: ChooseDial },
     { path: 'customer info', component:CustomerInfo },
+    { path: 'choose plan', component:ChoosePlan },
     {path:'login',component:Login ,title:"login"} ,
     { path: 'forget password',component:ForgetPassword ,title:"Forget Password"},
     {path:'register', component:Register ,title:"register"},
