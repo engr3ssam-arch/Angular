@@ -10,6 +10,7 @@ import { PurchaseStepper } from './Purchase/components/purchase-stepper/purchase
 import { ChooseDial } from './Purchase/components/choose-dial/choose-dial';
 import { CustomerInfo } from './Purchase/components/customer-info/customer-info';
 import { ChoosePlan } from './Purchase/components/choose-plan/choose-plan';
+import { ChooseBundle } from './Purchase/components/choose-bundle/choose-bundle';
 
 
 
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'choose dial', component: ChooseDial },
     { path: 'customer info', component:CustomerInfo },
     { path: 'choose plan', component:ChoosePlan },
+    { path: 'choose bundle', component:ChooseBundle },
     {path:'login',component:Login ,title:"login"} ,
     { path: 'forget password',component:ForgetPassword ,title:"Forget Password"},
     {path:'register', component:Register ,title:"register"},

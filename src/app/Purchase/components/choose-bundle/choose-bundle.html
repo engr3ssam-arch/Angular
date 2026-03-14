@@ -1,0 +1,59 @@
+<div class="container mt-5">
+<h3 class="fw-bold mb-4">{{  pageTitle }}</h3>
+
+  <div class="main-card card shadow-sm p-4 p-md-5">
+    
+    <div class="stepper-wrapper mb-5">
+      <div class="line"></div>
+      
+      <div class="step-item text-center" [class.completed]="currentStep > 1" [class.active]="currentStep === 1">
+        <div class="step-dot"></div>
+        <div class="step-label">Purchase Type</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 2" [class.active]="currentStep === 2">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Dial</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 3" [class.active]="currentStep === 3">
+        <div class="step-dot"></div>
+        <div class="step-label">Customer Info</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 4" [class.active]="currentStep === 4">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Plan</div>
+      </div>
+
+      <div class="step-item text-center" [class.completed]="currentStep > 5" [class.active]="currentStep === 5">
+        <div class="step-dot"></div>
+        <div class="step-label">Choose Bundle</div>
+      </div>
+    </div>
+     <div class="mb-4">
+    <label class="form-label fw-bold">Select Dial</label>
+    <select class="form-select select-dial-custom">
+      <option></option>
+    </select>
+  </div>
+
+    <h5 class="fw-bold mb-3">Choose Bundle</h5>
+      <div class=" row g-3">
+        <div class="card  col-md-6" *ngFor="let b of bundles">
+          <div class="bundle-card p-3 d-flex justify-content-between align-items-center"
+               [class.selected]="selectedBundleId === b.id" (click)="selectedBundleId = b.id">
+            <div>
+                <h6 class="fw-bold mb-0">{{b.name}}</h6><p class="small fw-bold mb-0">{{b.subTitle}}</p><small class="text-muted">{{b.description}}</small></div>
+            <div class="radio-indicator" [class.checked]="selectedBundleId === b.id"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+   <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+    <button class="btn btn-outline-danger px-5 rounded-pill" >Back</button>
+
+  </div>
+</div>
+

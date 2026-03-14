@@ -31,8 +31,7 @@ export class ChoosePlan {
 
    onNext() {
    
-    
-      this.router.navigate(['/choose bandle']);
-    
-  }
+      this.router.navigate(['/choose bundle']);
+   
+    }
 }
