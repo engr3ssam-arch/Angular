@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { Plans } from '../../interface/plans';
 import { PlanService } from '../../service/Plans Service/plan-service';
 import { Router } from '@angular/router';
+import { Stepper } from "../stepper/stepper";
 
 @Component({
   selector: 'app-choose-plan',
-  imports: [CommonModule],
+  imports: [CommonModule, Stepper],
   templateUrl: './choose-plan.html',
   styleUrl: './choose-plan.scss',
 })
@@ -34,4 +35,8 @@ export class ChoosePlan {
       this.router.navigate(['/choose bundle']);
    
     }
+     goToStep(step: number) {
+  this.currentStep = step;
+  
+}
 }

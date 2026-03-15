@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule} from '@angular/common';
 import { Router } from '@angular/router';
+import { Stepper } from "../stepper/stepper";
 
 
 @Component({
   selector: 'app-customer-info',
-  imports: [CommonModule ],
+  imports: [CommonModule, Stepper],
   templateUrl: './customer-info.html',
   styleUrl: './customer-info.scss',
 })
@@ -26,5 +27,8 @@ export class CustomerInfo {
       this.router.navigate(['/choose plan']);
     
   }
-
+  goToStep(step: number) {
+  this.currentStep = step;
+  
+}
 }

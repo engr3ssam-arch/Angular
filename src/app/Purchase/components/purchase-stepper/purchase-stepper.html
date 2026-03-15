@@ -2,31 +2,12 @@
   <h3 class="fw-bold mb-4">{{ pageTitle }}</h3>
 
   <div class="stepper-card card shadow-sm p-5">
-    
-    <div class="stepper-wrapper d-flex justify-content-between position-relative mb-5">
-      <div class="line"></div>
-       <div class="step-item text-center active">
-        <div class="step-dot"></div>
-        <div class="step-label">{{ productType === 'landline' ? 'Purchase Type' : 'Setup Options' }}</div>
-      </div>
-      <div class="step-item text-center">
-        <div class="step-dot"></div>
-        <div class="step-label">Choose Dial</div>
-      </div>
-      <div class="step-item text-center">
-        <div class="step-dot"></div>
-        <div class="step-label">Customer Info</div>
-      </div>
-      <div class="step-item text-center">
-        <div class="step-dot"></div>
-        <div class="step-label">Choose Plan</div>
-      </div>
-      <div class="step-item text-center">
-        <div class="step-dot"></div>
-        <div class="step-label">Choose Bundle</div>
-      </div>
-    </div>
+   <app-stepper  
+    [currentStep]="currentStep" 
+   (stepClick)="goToStep($event)">
 
+   </app-stepper> 
+   
     <div class="step-content">
       
       <div *ngIf="productType === 'voice'" class="mb-4">

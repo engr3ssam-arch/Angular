@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { Bundle } from '../../interface/bundle';
 import { BundleService } from '../../service/bundle/bundle-service';
 import { Router } from '@angular/router';
+import { Stepper } from "../stepper/stepper";
 
 @Component({
   selector: 'app-choose-bundle',
-  imports: [CommonModule],
+  imports: [CommonModule, Stepper],
   templateUrl: './choose-bundle.html',
   styleUrl: './choose-bundle.scss',
 })
@@ -30,6 +31,9 @@ selectBundle(id: number) {
   this.selectedBundleId = id;
 }
 
-
+goToStep(step: number) {
+  this.currentStep = step;
+  
+}
 
 }

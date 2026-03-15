@@ -4,10 +4,11 @@
   import { Router } from '@angular/router';
 import { DialsList } from '../../interface/dials-list';
 import { Dials } from '../../service/dials';
+import { Stepper } from "../stepper/stepper";
 
 @Component({
   selector: 'app-choose-dial',
-  imports: [CommonModule],
+  imports: [CommonModule, Stepper],
   templateUrl: './choose-dial.html',
   styleUrl: './choose-dial.scss',
 })
@@ -56,4 +57,8 @@ export class ChooseDial implements OnInit {
     this.router.navigate(['/purchase', this.selectedType]);
   }
 
+  goToStep(step: number) {
+  this.currentStep = step;
+  
+}
 }

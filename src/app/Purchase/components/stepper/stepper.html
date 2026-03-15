@@ -1,0 +1,12 @@
+<div class="stepper-wrapper mb-5">
+  <div class="line"></div>
+  
+  <div *ngFor="let step of steps" 
+       class="step-item text-center" 
+       [class.completed]="currentStep > step.value" 
+       [class.active]="currentStep === step.value"
+       (click)="onStepSelect(step.value)"
+       style="cursor: pointer;"> <div class="step-dot"></div>
+    <div class="step-label">{{ step.label }}</div>
+  </div>
+</div>

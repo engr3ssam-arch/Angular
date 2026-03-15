@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { Stepper } from "../stepper/stepper";
 
 @Component({
   selector: 'app-purchase-stepper',
-  imports: [NgIf ],
+  imports: [NgIf, Stepper],
   templateUrl: './purchase-stepper.html',
   styleUrl: './purchase-stepper.scss',
 })
@@ -14,6 +15,7 @@ export class PurchaseStepper implements OnInit{
   pageTitle: string = '';
    selectedType: string = '';
     isPurchaseModalOpen = false;
+    currentStep :number = 1;
   constructor(private route: ActivatedRoute ,private router:Router) {}
 
   ngOnInit(): void {
@@ -43,5 +45,8 @@ export class PurchaseStepper implements OnInit{
    
       this.router.navigate(['/choose dial']);
     }
- 
+  goToStep(step: number) {
+  this.currentStep = step;
+  
+}
 }

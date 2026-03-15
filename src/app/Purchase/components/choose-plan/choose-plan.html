@@ -3,36 +3,13 @@
 
   <div class="main-card card shadow-sm p-4 p-md-5">
     
-    <div class="stepper-wrapper mb-5">
-      <div class="line"></div>
-      
-      <div class="step-item text-center" [class.completed]="currentStep > 1" [class.active]="currentStep === 1">
-        <div class="step-dot"></div>
-        <div class="step-label">Purchase Type</div>
-      </div>
+<app-stepper
+[currentStep]="currentStep" 
+  (stepClick)="goToStep($event)">
 
-      <div class="step-item text-center" [class.completed]="currentStep > 2" [class.active]="currentStep === 2">
-        <div class="step-dot"></div>
-        <div class="step-label">Choose Dial</div>
-      </div>
+</app-stepper>
 
-      <div class="step-item text-center" [class.completed]="currentStep > 3" [class.active]="currentStep === 3">
-        <div class="step-dot"></div>
-        <div class="step-label">Customer Info</div>
-      </div>
-
-      <div class="step-item text-center" [class.completed]="currentStep > 4" [class.active]="currentStep === 4">
-        <div class="step-dot"></div>
-        <div class="step-label">Choose Plan</div>
-      </div>
-
-      <div class="step-item text-center" [class.completed]="currentStep > 5" [class.active]="currentStep === 5">
-        <div class="step-dot"></div>
-        <div class="step-label">Choose Bundle</div>
-      </div>
-    </div>
-    <div *ngIf="currentStep === 4" class="animate-fade">
-  
+  <div *ngIf="currentStep === 4" class="form-container animate-fade">
   <div class="mb-4">
     <label class="form-label fw-bold">Select Dial</label>
     <select class="form-select select-dial-custom">
@@ -76,3 +53,4 @@
   </div>
 </div>
   </div>
+</div>
