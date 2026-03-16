@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule} from '@angular/common';
 import { Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
+import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CustomerInfo {
 
 
   citizenshipStatus: string | null = null;
- constructor(private router: Router ) {}
+ constructor(private router: Router ,public pageTitleService:PageTitleService ) {}
  setCitizenship(status: string) {
     this.citizenshipStatus = status;
   }

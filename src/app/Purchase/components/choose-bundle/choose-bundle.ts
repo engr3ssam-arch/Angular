@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Bundle } from '../../interface/bundle';
 import { BundleService } from '../../service/bundle/bundle-service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
+import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 
 @Component({
   selector: 'app-choose-bundle',
@@ -11,7 +12,7 @@ import { Stepper } from "../stepper/stepper";
   templateUrl: './choose-bundle.html',
   styleUrl: './choose-bundle.scss',
 })
-export class ChooseBundle {
+export class ChooseBundle implements OnInit {
    currentStep: number = 5; 
      pageTitle: string = '';
 
@@ -20,12 +21,20 @@ export class ChooseBundle {
      bundles: Bundle[] = [];
 selectedBundleId: number | null = null;
 
-constructor(private bundleService: BundleService ,private router:Router) {}
+constructor(private bundleService: BundleService ,private router:Router,private route:ActivatedRoute, public pageTitleService:PageTitleService) {}
+ngOnInit(): void {
+   this.bundles= this.bundleService.getBundles(); 
+  this.route.params.subscribe(params => {
+    const type = params['type'];
+    if (type) {
+      this.pageTitleService.setServiceName(type);
+    }
 
- ngOnInit() {
 
-    this.bundles= this.bundleService.getBundles();
-  }
+  });
+ 
+}
+
 
 selectBundle(id: number) {
   this.selectedBundleId = id;

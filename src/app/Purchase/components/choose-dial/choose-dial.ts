@@ -5,6 +5,7 @@
 import { DialsList } from '../../interface/dials-list';
 import { Dials } from '../../service/dials';
 import { Stepper } from "../stepper/stepper";
+import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 
 @Component({
   selector: 'app-choose-dial',
@@ -20,32 +21,17 @@ export class ChooseDial implements OnInit {
    selectedDial:  DialsList | null = null;
    selectedType: string = '';
  
-   constructor(private router: Router ,private route: ActivatedRoute ,private dialService: Dials ) {}
+   constructor(private router: Router ,private route: ActivatedRoute ,private dialService: Dials ,public pageTitleService:PageTitleService) {}
   ngOnInit(): void {
-   this.dialsList = this.dialService.getDials();
-
-    this.route.params.subscribe(params => {
-      this.productType = params['type'];
-      this.updateUI();
-    });
-  }
-
-  updateUI() {
-    switch(this.productType) {
-      case 'voice': this.pageTitle = 'Purchase Voice SIM'; 
-       break;
-      case 'data': this.pageTitle = 'Purchase Data SIM';
-       break;
-      case 'landline': this.pageTitle = 'Purchase Landline';
-       break;
-      case 'adsl': this.pageTitle = 'Purchase ADSL'; 
-      break;
-      default: this.pageTitle = 'Purchase Product';
+    this.dialsList = this.dialService.getDials();
+  this.route.params.subscribe(params => {
+    const type = params['type'];
+    if (type) {
+      this.pageTitleService.setServiceName(type);
     }
-  }
-
-
-
+  });
+}
+   
   onNext() {
     if (this.selectedDial) {
     

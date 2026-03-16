@@ -61,7 +61,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-sim-card me-3 text-danger fs-5"></i>
-            <span class="fw-bold">Voice SIM</span>
+            <span class="fw-bold"(click)="selectService('Voice SIM')">Voice SIM</span>
           </div>
           <input class="form-check-input red-radio " type="radio" name="product" id="voice" checked value="voice" [(ngModel)]="selectedType">
         </div>
@@ -73,7 +73,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-wifi me-3 text-danger fs-5"></i>
-            <span class="fw-bold">Data SIM</span>
+            <span class="fw-bold"(click)="selectService('Data SIM')">Data SIM</span>
           </div>
           <input class="form-check-input red-radio " type="radio" name="product" id="data" value="data" [(ngModel)]="selectedType">
         </div>
@@ -85,7 +85,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-land-mine-on  text-danger me-3 fs-5"></i>
-            <span class="fw-bold">Landline</span>
+            <span class="fw-bold"(click)="selectService('Landline')">Landline</span>
           </div>
           <input class="form-check-input red-radio " type="radio" name="product" id="landline" value="landline" [(ngModel)]="selectedType">
         </div>
@@ -97,7 +97,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-house-signal me-3 text-danger fs-5"></i>
-            <span class="fw-bold">ADSL</span>
+            <span class="fw-bold"(click)="selectService('ADSL')">ADSL</span>
           </div>
           <input class="form-check-input red-radio " type="radio" name="product" id="adsl" value="adsl" [(ngModel)]="selectedType">
         </div>

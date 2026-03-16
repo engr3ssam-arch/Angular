@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../interface/user';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PageTitleService } from '../../../Purchase/service/pageTitle Service/page-title-service';
 @Component({
   selector: 'app-nav',
   imports: [RouterLink ,RouterLinkActive ,CommonModule,FormsModule],
@@ -19,7 +20,7 @@ export class Nav  {
   currentUser$: Observable<User| null>;
   selectedType: string = '';
 
-  constructor(private authService: DataService , private router:Router) {
+  constructor(private authService: DataService , private router:Router ,private pageTitleService:PageTitleService) {
   
   this.currentUser$ = this.authService.currentUser$;
   }
@@ -32,6 +33,10 @@ export class Nav  {
     this.isPurchaseModalOpen = !this.isPurchaseModalOpen;
   }
 
+selectService(name: string) {
+  this.pageTitleService.setServiceName(name); 
+  this.router.navigate(['/purchase stepper']); 
+}
 
  onProceed() {
     if (this.selectedType) {

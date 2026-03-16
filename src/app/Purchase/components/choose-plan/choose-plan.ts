@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Plans } from '../../interface/plans';
 import { PlanService } from '../../service/Plans Service/plan-service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
+import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 
 @Component({
   selector: 'app-choose-plan',
@@ -11,7 +12,7 @@ import { Stepper } from "../stepper/stepper";
   templateUrl: './choose-plan.html',
   styleUrl: './choose-plan.scss',
 })
-export class ChoosePlan {
+export class ChoosePlan implements OnInit {
      currentStep: number = 4; 
      pageTitle: string = '';
 
@@ -19,12 +20,18 @@ export class ChoosePlan {
     selectedPlanId: number | null = 1;
 
  
-  constructor(private planService:PlanService ,private router:Router) {}
-
-  ngOnInit() {
-
-    this.plan = this.planService.getPlans();
-  }
+  constructor(private planService:PlanService ,private router:Router , private route :ActivatedRoute, public pageTitleService:PageTitleService) {}
+  ngOnInit(): void {
+     this.plan = this.planService.getPlans();
+  this.route.params.subscribe(params => {
+    const type = params['type'];
+    if (type) {
+      this.pageTitleService.setServiceName(type);
+    }
+  });
+ 
+}
+  
 
   selectPlan(id: number) {
     this.selectedPlanId = id;
