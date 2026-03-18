@@ -35,7 +35,7 @@ export class Nav  {
 
 selectService(name: string) {
   this.pageTitleService.setServiceName(name); 
-  this.router.navigate(['/purchase stepper']); 
+ 
 }
 
  onProceed() {
