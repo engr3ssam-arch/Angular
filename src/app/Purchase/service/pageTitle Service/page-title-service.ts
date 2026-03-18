@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PageTitleService {
- private selectedService: string = '';
+
+ private serviceNameSource = new BehaviorSubject<string>('Product');
+  currentService$ = this.serviceNameSource.asObservable();
 
   setServiceName(name: string) {
-    this.selectedService = name;
+  
+    if (name) {
+      this.serviceNameSource.next(name); 
+    }
   }
 
-  get fullTitle(): string {
-    if (!this.selectedService) 
-      return 'Purchase Product';
-    return `Purchase ${this.selectedService}`;
+  fullTitle(name: string): string {
+    if (!name || name === 'Product') return 'Purchase Product';
+    return `Purchase ${name}`;
   }
 }

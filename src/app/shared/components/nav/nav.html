@@ -56,50 +56,50 @@
     
    <div class="container">
   <div class="row g-3">
-     <div class="col-6">
+     <div class="col-6"(click)="selectService('Voice SIM')">
       <div class="card p-3 border-rounded shadow-sm">
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-sim-card me-3 text-danger fs-5"></i>
-            <span class="fw-bold"(click)="selectService('Voice SIM')">Voice SIM</span>
+            <span class="fw-bold">Voice SIM</span>
           </div>
-          <input class="form-check-input red-radio " type="radio" name="product" id="voice" checked value="voice" [(ngModel)]="selectedType">
+          <input class="form-check-input red-radio " type="radio" name="product" id="voice" checked value="Voice" [(ngModel)]="selectedType">
         </div>
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-6"(click)="selectService('Data SIM')">
       <div class="card p-3 border-rounded shadow-sm">
         <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center fw-bold" >
             <i class="fa-solid fa-wifi me-3 text-danger fs-5"></i>
-            <span class="fw-bold"(click)="selectService('Data SIM')">Data SIM</span>
+            <span >Data SIM</span>
           </div>
-          <input class="form-check-input red-radio " type="radio" name="product" id="data" value="data" [(ngModel)]="selectedType">
+          <input class="form-check-input red-radio " type="radio" name="product" id="data" value="Data SIM" [(ngModel)]="selectedType">
         </div>
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-6"(click)="selectService('Landline')">
       <div class="card p-3 border-rounded shadow-sm">
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-land-mine-on  text-danger me-3 fs-5"></i>
-            <span class="fw-bold"(click)="selectService('Landline')">Landline</span>
+            <span class="fw-bold">Landline</span>
           </div>
-          <input class="form-check-input red-radio " type="radio" name="product" id="landline" value="landline" [(ngModel)]="selectedType">
+          <input class="form-check-input red-radio " type="radio" name="product" id="landline" value="Landline" [(ngModel)]="selectedType">
         </div>
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-6"(click)="selectService('ADSL')">
       <div class="card p-3 border-rounded shadow-sm">
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-house-signal me-3 text-danger fs-5"></i>
-            <span class="fw-bold"(click)="selectService('ADSL')">ADSL</span>
+            <span class="fw-bold">ADSL</span>
           </div>
-          <input class="form-check-input red-radio " type="radio" name="product" id="adsl" value="adsl" [(ngModel)]="selectedType">
+          <input class="form-check-input red-radio " type="radio" name="product" id="adsl" value="ADSL" [(ngModel)]="selectedType">
         </div>
       </div>
     </div>

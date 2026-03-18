@@ -1,8 +1,8 @@
-<div class="container mt-5">
-<h3 class="fw-bold mb-4">{{pageTitleService.fullTitle}}</h3>
+<div class="container mt-5" >
 
-  <div class="main-card card shadow-sm p-4 p-md-5">
-    
+<h3 class="fw-bold mb-4">
+    Purchase {{ (pageTitleService.currentService$ | async) }}
+  </h3>
    <app-stepper
     [currentStep]="currentStep" 
    (stepClick)="goToStep($event)">
@@ -43,4 +43,3 @@
     </div>
 
   </div>
-</div>

@@ -1,6 +1,6 @@
   import { Component, OnInit } from '@angular/core';
   import { ActivatedRoute, Route } from '@angular/router';
-  import { CommonModule, NgClass } from '@angular/common';
+  import { AsyncPipe, CommonModule, NgClass } from '@angular/common';
   import { Router } from '@angular/router';
 import { DialsList } from '../../interface/dials-list';
 import { Dials } from '../../service/dials';
@@ -9,7 +9,7 @@ import { PageTitleService } from '../../service/pageTitle Service/page-title-ser
 
 @Component({
   selector: 'app-choose-dial',
-  imports: [CommonModule, Stepper],
+  imports: [CommonModule, Stepper,AsyncPipe],
   templateUrl: './choose-dial.html',
   styleUrl: './choose-dial.scss',
 })

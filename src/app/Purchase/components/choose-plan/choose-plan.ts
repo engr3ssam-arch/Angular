@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Plans } from '../../interface/plans';
 import { PlanService } from '../../service/Plans Service/plan-service';
@@ -8,7 +8,7 @@ import { PageTitleService } from '../../service/pageTitle Service/page-title-ser
 
 @Component({
   selector: 'app-choose-plan',
-  imports: [CommonModule, Stepper],
+  imports: [CommonModule, Stepper,AsyncPipe],
   templateUrl: './choose-plan.html',
   styleUrl: './choose-plan.scss',
 })

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Bundle } from '../../interface/bundle';
 import { BundleService } from '../../service/bundle/bundle-service';
@@ -6,9 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 
+
 @Component({
   selector: 'app-choose-bundle',
-  imports: [CommonModule, Stepper],
+  imports: [CommonModule, Stepper,AsyncPipe],
   templateUrl: './choose-bundle.html',
   styleUrl: './choose-bundle.scss',
 })
