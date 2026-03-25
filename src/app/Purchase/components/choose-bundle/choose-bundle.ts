@@ -5,11 +5,12 @@ import { BundleService } from '../../service/bundle/bundle-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
+import { Summary } from "../summary/summary";
 
 
 @Component({
   selector: 'app-choose-bundle',
-  imports: [CommonModule, Stepper,AsyncPipe],
+  imports: [CommonModule, Stepper, AsyncPipe, Summary],
   templateUrl: './choose-bundle.html',
   styleUrl: './choose-bundle.scss',
 })

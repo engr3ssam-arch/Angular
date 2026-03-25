@@ -5,10 +5,11 @@ import { PlanService } from '../../service/Plans Service/plan-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
+import { Summary } from "../summary/summary";
 
 @Component({
   selector: 'app-choose-plan',
-  imports: [CommonModule, Stepper,AsyncPipe],
+  imports: [CommonModule, Stepper, AsyncPipe, Summary],
   templateUrl: './choose-plan.html',
   styleUrl: './choose-plan.scss',
 })

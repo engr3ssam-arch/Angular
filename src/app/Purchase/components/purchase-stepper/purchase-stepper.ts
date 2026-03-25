@@ -4,10 +4,11 @@ import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
+import { Summary } from "../summary/summary";
 
 @Component({
   selector: 'app-purchase-stepper',
-  imports: [NgIf, Stepper, AsyncPipe,CommonModule],
+  imports: [NgIf, Stepper, AsyncPipe, CommonModule, Summary],
   templateUrl: './purchase-stepper.html',
   styleUrl: './purchase-stepper.scss',
 })

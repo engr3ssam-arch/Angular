@@ -3,11 +3,17 @@
 <h3 class="fw-bold mb-4">
     Purchase {{ (pageTitleService.currentService$ | async) }}
   </h3>
+   <div class="row g-4"> 
+    
+ <div class="col-lg-8">
+  <div class="main-card card shadow-sm p-4 p-md-5">
+    
    <app-stepper
     [currentStep]="currentStep" 
    (stepClick)="goToStep($event)">
    </app-stepper>
 
+ 
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h6 class="fw-bold m-0">Choose From Reserved Dials</h6>
       <button class="btn text-danger fw-bold border-0 p-0 small">Reserve Dial</button>
@@ -41,5 +47,13 @@
               [disabled]="!selectedDial"
               (click)="onNext()">Next</button>
     </div>
+ </div>
+ </div>
 
+
+<div class="col-lg-4">
+      <div class="sticky-top" style="top: 20px; z-index: 1000;">
+      <app-summary></app-summary>
+      </div>
+    </div>
   </div>

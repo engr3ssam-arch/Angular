@@ -1,38 +1,45 @@
 <div class="container mt-5">
-
-<h3 class="fw-bold mb-4">
+  <h3 class="fw-bold mb-4">
     Purchase {{ (pageTitleService.currentService$ | async) }}
   </h3>
-<div class="main-card card shadow-sm p-4 p-md-5">
+
+  <div class="row g-4">
     
-<app-stepper 
-  [currentStep]="currentStep" 
-  (stepClick)="goToStep($event)">
-</app-stepper>
+    <div class="col-lg-8">
+      <div class="main-card card shadow-sm p-4 p-md-5">
+        <app-stepper [currentStep]="currentStep" (stepClick)="goToStep($event)"></app-stepper>
 
-     <div class="mb-4">
-    <label class="form-label fw-bold">Select Dial</label>
-    <select class="form-select select-dial-custom">
-      <option></option>
-    </select>
-  </div>
+        <div class="mb-4 mt-4">
+          <label class="form-label fw-bold">Select Dial</label>
+          <select class="form-select select-dial-custom">
+            <option></option>
+          </select>
+        </div>
 
-    <h5 class="fw-bold mb-3">Choose Bundle</h5>
-      <div class=" row g-3">
-        <div class="card  col-md-6" *ngFor="let b of bundles">
-          <div class="bundle-card p-3 d-flex justify-content-between align-items-center"
-               [class.selected]="selectedBundleId === b.id" (click)="selectedBundleId = b.id">
-            <div>
-                <h6 class="fw-bold mb-0">{{b.name}}</h6><p class="small fw-bold mb-0">{{b.subTitle}}</p><small class="text-muted">{{b.description}}</small></div>
-            <div class="radio-indicator" [class.checked]="selectedBundleId === b.id"></div>
+        <h5 class="fw-bold mb-3">Choose Bundle</h5>
+        <div class="row g-3">
+          <div class="col-md-6" *ngFor="let b of bundles">
+            <div class="bundle-card p-3 d-flex justify-content-between align-items-center"
+                 [class.selected]="selectedBundleId === b.id" 
+                 (click)="selectedBundleId = b.id">
+              <div>
+                <h6 class="fw-bold mb-0">{{b.name}}</h6>
+                <p class="small fw-bold mb-0">{{b.subTitle}}</p>
+                <small class="text-muted">{{b.description}}</small>
+              </div>
+              <div class="radio-indicator" [class.checked]="selectedBundleId === b.id"></div>
+            </div>
           </div>
         </div>
+
+        <div class="d-flex justify-content-between mt-5 pt-4 border-top">
+          <button class="btn btn-outline-danger px-5 rounded-pill">Back</button>
+          </div>
+      </div> </div> <div class="col-lg-4">
+      <div class="sticky-top" style="top: 20px; z-index: 1000;">
+        <app-summary></app-summary>
       </div>
     </div>
-  
-   <div class="d-flex justify-content-between mt-5 pt-4 border-top">
-    <button class="btn btn-outline-danger px-5 rounded-pill" >Back</button>
 
-  </div>
-
+  </div> 
 </div>

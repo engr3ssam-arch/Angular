@@ -2,6 +2,9 @@
 <h3 class="fw-bold mb-4">
     Purchase {{ (pageTitleService.currentService$ | async) }}
   </h3>
+  <div class="row g-4"> 
+    
+ <div class="col-lg-8">
 <div class="stepper-card card shadow-sm p-5">
    <app-stepper  
     [currentStep]="currentStep" 
@@ -39,5 +42,13 @@
     <div class="d-flex justify-content-end mt-5">
       <button class="btn btn-danger px-5 rounded-pill fw-bold py-2" (click)="onNext()">Next</button>
     </div>
-  </div>
+    </div>
+ </div>
+    <div class="col-lg-4">
+      <div class="sticky-top" style="top: 20px; z-index: 1000;">
+       <app-summary></app-summary>
+      </div>
+    </div>
+  
+</div>
 </div>

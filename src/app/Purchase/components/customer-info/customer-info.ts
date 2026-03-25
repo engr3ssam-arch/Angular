@@ -3,11 +3,12 @@ import { AsyncPipe, CommonModule} from '@angular/common';
 import { Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
+import { Summary } from "../summary/summary";
 
 
 @Component({
   selector: 'app-customer-info',
-  imports: [CommonModule, Stepper,CommonModule,AsyncPipe],
+  imports: [CommonModule, Stepper, CommonModule, AsyncPipe, Summary],
   templateUrl: './customer-info.html',
   styleUrl: './customer-info.scss',
 })

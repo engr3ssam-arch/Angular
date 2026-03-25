@@ -6,10 +6,11 @@ import { DialsList } from '../../interface/dials-list';
 import { Dials } from '../../service/dials';
 import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
+import { Summary } from "../summary/summary";
 
 @Component({
   selector: 'app-choose-dial',
-  imports: [CommonModule, Stepper,AsyncPipe],
+  imports: [CommonModule, Stepper, AsyncPipe, Summary],
   templateUrl: './choose-dial.html',
   styleUrl: './choose-dial.scss',
 })
