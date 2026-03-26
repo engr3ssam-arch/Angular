@@ -1,16 +1,15 @@
-import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Bundle } from '../../interface/bundle';
 import { BundleService } from '../../service/bundle/bundle-service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
-import { Summary } from "../summary/summary";
+import { SummaryService } from '../../service/summary Service/summary-service';
 
 
 @Component({
   selector: 'app-choose-bundle',
-  imports: [CommonModule, Stepper, AsyncPipe, Summary],
+  imports: [CommonModule],
   templateUrl: './choose-bundle.html',
   styleUrl: './choose-bundle.scss',
 })
@@ -23,7 +22,7 @@ export class ChooseBundle implements OnInit {
      bundles: Bundle[] = [];
 selectedBundleId: number | null = null;
 
-constructor(private bundleService: BundleService ,private router:Router,private route:ActivatedRoute, public pageTitleService:PageTitleService) {}
+constructor(private bundleService: BundleService ,private router:Router,private route:ActivatedRoute, public pageTitleService:PageTitleService,public summaryService:SummaryService) {}
 ngOnInit(): void {
    this.bundles= this.bundleService.getBundles(); 
   this.route.params.subscribe(params => {
@@ -38,8 +37,12 @@ ngOnInit(): void {
 }
 
 
-selectBundle(id: number) {
+selectBundle(id: number ,name:string) {
   this.selectedBundleId = id;
+  this.summaryService.updateSummary({ 
+    bundleName: name 
+  });
+
 }
 
 goToStep(step: number) {

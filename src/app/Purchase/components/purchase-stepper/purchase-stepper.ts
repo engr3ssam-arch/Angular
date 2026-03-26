@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
+import {  CommonModule, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
-import { Stepper } from "../stepper/stepper";
+import { SummaryService } from '../../service/summary Service/summary-service';
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
-import { Summary } from "../summary/summary";
+
 
 @Component({
   selector: 'app-purchase-stepper',
-  imports: [NgIf, Stepper, AsyncPipe, CommonModule, Summary],
+  imports: [NgIf, CommonModule],
   templateUrl: './purchase-stepper.html',
   styleUrl: './purchase-stepper.scss',
 })
@@ -18,7 +18,7 @@ export class PurchaseStepper {
    selectedType: string = '';
     isPurchaseModalOpen = false;
     currentStep :number = 1;
-  constructor(private route: ActivatedRoute ,private router:Router ,public pageTitleService:PageTitleService) {}
+  constructor(private route: ActivatedRoute ,private router:Router ,public pageTitleService:PageTitleService, public summaryService :SummaryService) {}
 
     onNext() {
    
@@ -28,4 +28,12 @@ export class PurchaseStepper {
   this.currentStep = step;
   
 }
+
+
+onResType(type: string) {
+  
+  this.summaryService.updateSummary({ resType: type });
+}
+
+
 }

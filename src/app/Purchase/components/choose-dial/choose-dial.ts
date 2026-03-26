@@ -7,10 +7,11 @@ import { Dials } from '../../service/dials';
 import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 import { Summary } from "../summary/summary";
+import { SummaryService } from '../../service/summary Service/summary-service';
 
 @Component({
   selector: 'app-choose-dial',
-  imports: [CommonModule, Stepper, AsyncPipe, Summary],
+  imports: [CommonModule],
   templateUrl: './choose-dial.html',
   styleUrl: './choose-dial.scss',
 })
@@ -22,7 +23,7 @@ export class ChooseDial implements OnInit {
    selectedDial:  DialsList | null = null;
    selectedType: string = '';
  
-   constructor(private router: Router ,private route: ActivatedRoute ,private dialService: Dials ,public pageTitleService:PageTitleService) {}
+   constructor(private router: Router ,private route: ActivatedRoute ,private dialService: Dials ,public pageTitleService:PageTitleService ,public summaryService:SummaryService) {}
   ngOnInit(): void {
     this.dialsList = this.dialService.getDials();
   this.route.params.subscribe(params => {
@@ -47,5 +48,9 @@ export class ChooseDial implements OnInit {
   goToStep(step: number) {
   this.currentStep = step;
   
+}
+
+onResDial(type: string) {
+  this.summaryService.updateSummary({ resDial: type });
 }
 }

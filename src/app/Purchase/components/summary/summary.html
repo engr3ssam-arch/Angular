@@ -1,12 +1,38 @@
-
 <div class="summary-card card border-0 shadow-sm p-4 rounded-4 sticky-top">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h5 class="fw-bold m-0">Summary</h5>
   </div>
 
-  <div class="summary-content d-flex flex-column justify-content-center align-items-center h-100 min-vh-50">
-    
-    <div class="text-center py-5 animate-fade">
+  <div class="summary-content d-flex flex-column justify-content-center align-items-start ">
+    <div class="mt-3" *ngIf="summaryService.summaryData().resType">
+    <p class="text-muted mb-0 small">Reservation Type</p>
+    <p class="fw-bold text-danger">{{ summaryService.summaryData().resType }}</p>
+  </div>
+
+   
+    <div class="summary-item" *ngIf="summaryService.summaryData().resDial">
+  <p class="text-muted small mb-0">Reserved Dial</p>
+  <p class="fw-bold text-danger">{{ summaryService.summaryData().resDial }}</p>
+</div>
+
+
+<div class="summary-item" *ngIf="summaryService.summaryData().citizenStatus">
+  <p class="text-muted small mb-0">Customer Info</p>
+  <p class="fw-bold text-danger">{{ summaryService.summaryData().citizenStatus }}</p>
+</div>
+
+<div class="summary-item" *ngIf="summaryService.summaryData().planName">
+  <p class="text-muted small mb-0">Choose Plan</p>
+  <p class="fw-bold text-danger">{{ summaryService.summaryData().planName }}</p>
+</div>
+
+<div class="summary-item" *ngIf="summaryService.summaryData().bundleName">
+  <p class="text-muted small mb-0">Bundle Name</p>
+  <p class="fw-bold text-danger">{{ summaryService.summaryData().bundleName }}</p>
+</div>
+   </div>
+
+    <div class="text-center py-5 animate-fade" *ngIf="!summaryService.summaryData().resType">
       <div class="empty-icon-wrapper mb-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#e0e0e0" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
           <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
@@ -18,4 +44,3 @@
     </div>
 
   </div>
-</div>

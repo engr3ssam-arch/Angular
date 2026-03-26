@@ -1,17 +1,3 @@
-<div class="container mt-5" >
-
-<h3 class="fw-bold mb-4">
-    Purchase {{ (pageTitleService.currentService$ | async) }}
-  </h3>
-   <div class="row g-4"> 
-    
- <div class="col-lg-8">
-  <div class="main-card card shadow-sm p-4 p-md-5">
-    
-   <app-stepper
-    [currentStep]="currentStep" 
-   (stepClick)="goToStep($event)">
-   </app-stepper>
 
  
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -23,7 +9,7 @@
       <div class="col" *ngFor="let dial of dialsList">
         <div class="card dial-card shadow-sm border-0 p-3" 
              [class.selected-card]="selectedDial === dial"
-             (click)="selectedDial = dial">
+             (click)="selectedDial = dial ; onResDial(dial.number)">
           <div class="card-body p-0 d-flex justify-content-between align-items-center">
             <div>
               <h5 class="fw-bold mb-1">{{ dial.number }}</h5>
@@ -39,21 +25,3 @@
         </div>
       </div>
     </div>
-
-    <div class="d-flex justify-content-between mt-5">
-      <button class="btn btn-outline-danger px-5 rounded-pill fw-bold py-2" (click)="onBack()">Back</button>
-      
-      <button class="btn btn-next px-5 rounded-pill fw-bold text-white py-2" 
-              [disabled]="!selectedDial"
-              (click)="onNext()">Next</button>
-    </div>
- </div>
- </div>
-
-
-<div class="col-lg-4">
-      <div class="sticky-top" style="top: 20px; z-index: 1000;">
-      <app-summary></app-summary>
-      </div>
-    </div>
-  </div>

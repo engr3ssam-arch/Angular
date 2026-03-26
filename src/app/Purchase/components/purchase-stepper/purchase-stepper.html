@@ -1,27 +1,14 @@
-<div class="container mt-5" >
-<h3 class="fw-bold mb-4">
-    Purchase {{ (pageTitleService.currentService$ | async) }}
-  </h3>
-  <div class="row g-4"> 
-    
- <div class="col-lg-8">
-<div class="stepper-card card shadow-sm p-5">
-   <app-stepper  
-    [currentStep]="currentStep" 
-   (stepClick)="goToStep($event)">
-
-   </app-stepper> 
-   
+  
     <div class="step-content">
       
       <div *ngIf="productType === 'voice'" class="mb-4">
         <p class="fw-bold">Choose SIM Type</p>
         <div class="d-flex gap-5">
           <label class="d-flex align-items-center gap-2">
-            <input type="radio" name="sim" class="red-radio" checked> Row
+            <input type="radio" name="sim" class="red-radio" (change)="onResType('Row')"> Row
           </label>
           <label class="d-flex align-items-center gap-2">
-            <input type="radio" name="sim" class="red-radio"> Pre-Activate
+            <input type="radio" name="sim" class="red-radio"(change)="onResType('Pre-Activate')"> Pre-Activate
           </label>
         </div>
       </div>
@@ -30,25 +17,14 @@
         <p class="fw-bold">Choose Reservation Type</p>
         <div class="d-flex gap-5">
           <label class="d-flex align-items-center gap-2">
-            <input type="radio" name="res" class="red-radio" checked> Pool Selection
+            <input type="radio" name="res" class="red-radio" (change)="onResType('Pool Selection')"> Pool Selection
           </label>
           <label class="d-flex align-items-center gap-2">
-            <input type="radio" name="res" class="red-radio"> Manual Input
+            <input type="radio" name="res" class="red-radio" (change)="onResType('Manual Input')"> Manual Input
           </label>
         </div>
       </div>
+      
     </div>
 
-    <div class="d-flex justify-content-end mt-5">
-      <button class="btn btn-danger px-5 rounded-pill fw-bold py-2" (click)="onNext()">Next</button>
-    </div>
-    </div>
- </div>
-    <div class="col-lg-4">
-      <div class="sticky-top" style="top: 20px; z-index: 1000;">
-       <app-summary></app-summary>
-      </div>
-    </div>
-  
-</div>
-</div>
+    

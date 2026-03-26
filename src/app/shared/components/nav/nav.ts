@@ -41,7 +41,7 @@ selectService(name: string) {
  onProceed() {
     if (this.selectedType) {
       this.isPurchaseModalOpen = false; 
-      this.router.navigate(['/purchase', this.selectedType]);
+      this.router.navigate(['/purchase-main', this.selectedType]);
     }
   }
 }

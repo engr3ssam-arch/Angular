@@ -6,10 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 import { Summary } from "../summary/summary";
+import { SummaryService } from '../../service/summary Service/summary-service';
 
 @Component({
   selector: 'app-choose-plan',
-  imports: [CommonModule, Stepper, AsyncPipe, Summary],
+  imports: [CommonModule],
   templateUrl: './choose-plan.html',
   styleUrl: './choose-plan.scss',
 })
@@ -21,7 +22,7 @@ export class ChoosePlan implements OnInit {
     selectedPlanId: number | null = 1;
 
  
-  constructor(private planService:PlanService ,private router:Router , private route :ActivatedRoute, public pageTitleService:PageTitleService) {}
+  constructor(private planService:PlanService ,private router:Router , private route :ActivatedRoute, public pageTitleService:PageTitleService, public summaryService:SummaryService) {}
   ngOnInit(): void {
      this.plan = this.planService.getPlans();
   this.route.params.subscribe(params => {
@@ -34,8 +35,9 @@ export class ChoosePlan implements OnInit {
 }
   
 
-  selectPlan(id: number) {
+  selectPlan(id: number , name: string) {
     this.selectedPlanId = id;
+    this.summaryService.updateSummary({ planName: name });
   }
 
    onNext() {
@@ -47,4 +49,5 @@ export class ChoosePlan implements OnInit {
   this.currentStep = step;
   
 }
+
 }
