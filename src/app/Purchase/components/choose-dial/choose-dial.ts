@@ -8,6 +8,7 @@ import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 import { Summary } from "../summary/summary";
 import { SummaryService } from '../../service/summary Service/summary-service';
+import { StepperService } from '../../service/stepper Service/stepper-service';
 
 @Component({
   selector: 'app-choose-dial',
@@ -23,7 +24,7 @@ export class ChooseDial implements OnInit {
    selectedDial:  DialsList | null = null;
    selectedType: string = '';
  
-   constructor(private router: Router ,private route: ActivatedRoute ,private dialService: Dials ,public pageTitleService:PageTitleService ,public summaryService:SummaryService) {}
+   constructor(private router: Router ,private route: ActivatedRoute ,private dialService: Dials ,public pageTitleService:PageTitleService ,public summaryService:SummaryService ,public stepperService:StepperService) {}
   ngOnInit(): void {
     this.dialsList = this.dialService.getDials();
   this.route.params.subscribe(params => {
@@ -52,5 +53,24 @@ export class ChooseDial implements OnInit {
 
 onResDial(type: string) {
   this.summaryService.updateSummary({ resDial: type });
+    this.stepperService.setStepValid(true); 
+   
+}
+
+
+
+
+
+
+
+
+onSelectionChange(event: any) {
+    const isValid = !!event.value; 
+    this.stepperService.setStepValid(isValid);
+  }
+
+  updateValidity(isValid: boolean) {
+  this.stepperService.setStepValid(isValid);
+ 
 }
 }

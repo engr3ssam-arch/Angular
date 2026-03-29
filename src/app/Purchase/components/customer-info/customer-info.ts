@@ -5,7 +5,7 @@ import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 import { Summary } from "../summary/summary";
 import { SummaryService } from '../../service/summary Service/summary-service';
-
+import { StepperService } from '../../service/stepper Service/stepper-service';
 
 @Component({
   selector: 'app-customer-info',
@@ -19,7 +19,7 @@ export class CustomerInfo {
 
 
   citizenshipStatus: string | null = null;
- constructor(private router: Router ,public pageTitleService:PageTitleService ,public summaryService:SummaryService) {}
+ constructor(private router: Router ,public pageTitleService:PageTitleService ,public summaryService:SummaryService ,public stepperService: StepperService ) {}
  setCitizenship(status: string) {
     this.citizenshipStatus = status;
   }
@@ -36,5 +36,25 @@ export class CustomerInfo {
 }
 onCitizenStatus(type: string) {
   this.summaryService.updateSummary({ citizenStatus: type });
+    this.stepperService.setStepValid(true); 
+   
+}
+
+
+
+
+
+
+
+
+
+onSelectionChange(event: any) {
+    const isValid = !!event.value; 
+    this.stepperService.setStepValid(isValid);
+  }
+
+  updateValidity(isValid: boolean) {
+  this.stepperService.setStepValid(isValid);
+ 
 }
 }

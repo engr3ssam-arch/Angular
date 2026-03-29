@@ -7,6 +7,7 @@ import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 import { Summary } from "../summary/summary";
 import { SummaryService } from '../../service/summary Service/summary-service';
+import { StepperService } from '../../service/stepper Service/stepper-service';
 
 @Component({
   selector: 'app-choose-plan',
@@ -22,7 +23,7 @@ export class ChoosePlan implements OnInit {
     selectedPlanId: number | null = 1;
 
  
-  constructor(private planService:PlanService ,private router:Router , private route :ActivatedRoute, public pageTitleService:PageTitleService, public summaryService:SummaryService) {}
+  constructor(private planService:PlanService ,private router:Router , private route :ActivatedRoute, public pageTitleService:PageTitleService, public summaryService:SummaryService ,public stepperService:StepperService) {}
   ngOnInit(): void {
      this.plan = this.planService.getPlans();
   this.route.params.subscribe(params => {
@@ -38,6 +39,7 @@ export class ChoosePlan implements OnInit {
   selectPlan(id: number , name: string) {
     this.selectedPlanId = id;
     this.summaryService.updateSummary({ planName: name });
+      this.stepperService.setStepValid(true); 
   }
 
    onNext() {
@@ -50,4 +52,19 @@ export class ChoosePlan implements OnInit {
   
 }
 
+
+
+
+
+
+
+onSelectionChange(event: any) {
+    const isValid = !!event.value; 
+    this.stepperService.setStepValid(isValid);
+  }
+
+  updateValidity(isValid: boolean) {
+  this.stepperService.setStepValid(isValid);
+ 
+}
 }

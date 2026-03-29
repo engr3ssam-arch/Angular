@@ -5,6 +5,7 @@ import { BundleService } from '../../service/bundle/bundle-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 import { SummaryService } from '../../service/summary Service/summary-service';
+import { StepperService } from '../../service/stepper Service/stepper-service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ChooseBundle implements OnInit {
      bundles: Bundle[] = [];
 selectedBundleId: number | null = null;
 
-constructor(private bundleService: BundleService ,private router:Router,private route:ActivatedRoute, public pageTitleService:PageTitleService,public summaryService:SummaryService) {}
+constructor(private bundleService: BundleService ,private router:Router,private route:ActivatedRoute, public pageTitleService:PageTitleService,public summaryService:SummaryService ,public stepperService:StepperService) {}
 ngOnInit(): void {
    this.bundles= this.bundleService.getBundles(); 
   this.route.params.subscribe(params => {
@@ -42,6 +43,8 @@ selectBundle(id: number ,name:string) {
   this.summaryService.updateSummary({ 
     bundleName: name 
   });
+  this.stepperService.setStepValid(true); 
+
 
 }
 
@@ -50,4 +53,15 @@ goToStep(step: number) {
   
 }
 
+
+
+onSelectionChange(event: any) {
+    const isValid = !!event.value; 
+    this.stepperService.setStepValid(isValid);
+  }
+
+  updateValidity(isValid: boolean) {
+  this.stepperService.setStepValid(isValid);
+ 
+}
 }
