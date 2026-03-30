@@ -1,0 +1,40 @@
+.summary-card {
+  background-color: #ffffff;
+  min-height: 380px;
+  top: 20px;
+  transition: all 0.3s ease;
+}
+.summary-card h5 {
+  color: #333;
+  font-size: 1.2rem;
+}
+.summary-card .text-muted {
+  color: #a0a0a0 !important;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.summary-card .empty-icon-wrapper {
+  background-color: #f8f9fa;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.animate-fade {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=summary.css.map */

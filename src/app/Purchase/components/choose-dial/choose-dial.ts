@@ -33,6 +33,17 @@ export class ChooseDial implements OnInit {
       this.pageTitleService.setServiceName(type);
     }
   });
+
+ let savedData = this.summaryService.summaryData(); 
+  
+  if (savedData && savedData.resDial) {
+   let found = this.dialsList.find(d => d.number === savedData.resDial);
+    
+    if (found) {
+      this.selectedDial = found; 
+      this.stepperService.setStepValid(true);
+    }
+  }
 }
    
   onNext() {

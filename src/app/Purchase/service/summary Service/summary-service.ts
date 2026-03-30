@@ -9,7 +9,9 @@ export class SummaryService {
     resDial: '',
     citizenStatus:'',
     planName:'',
-    bundleName: ''
+    bundleName: '',
+    planId: 0,
+    bundleId: 0
    
   });
 
@@ -17,4 +19,5 @@ export class SummaryService {
     this.summaryData.update(oldData => ({ ...oldData, ...newData }));
   }
   
+ 
 }

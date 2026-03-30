@@ -16,37 +16,38 @@ import { StepperService } from '../../service/stepper Service/stepper-service';
 })
 export class ChooseBundle implements OnInit {
    currentStep: number = 5; 
-     pageTitle: string = '';
-
-
-
-     bundles: Bundle[] = [];
-selectedBundleId: number | null = null;
+   pageTitle: string = '';
+   bundles: Bundle[] = [];
+   selectedBundleId: number | null = null;
 
 constructor(private bundleService: BundleService ,private router:Router,private route:ActivatedRoute, public pageTitleService:PageTitleService,public summaryService:SummaryService ,public stepperService:StepperService) {}
+
 ngOnInit(): void {
    this.bundles= this.bundleService.getBundles(); 
   this.route.params.subscribe(params => {
-    const type = params['type'];
+    let type = params['type'];
     if (type) {
       this.pageTitleService.setServiceName(type);
     }
 
-
   });
+
+  let savedData = this.summaryService.summaryData(); 
+  if (savedData && savedData.bundleId !== 0) {
+    this.selectedBundleId = savedData.bundleId;
+    this.stepperService.setStepValid(true);
+  }
  
 }
 
 
 selectBundle(id: number ,name:string) {
   this.selectedBundleId = id;
-  this.summaryService.updateSummary({ 
-    bundleName: name 
-  });
+  this.summaryService.updateSummary({ bundleId: id, bundleName: name });
   this.stepperService.setStepValid(true); 
-
-
 }
+
+
 
 goToStep(step: number) {
   this.currentStep = step;

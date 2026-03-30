@@ -24,6 +24,7 @@ export class ChoosePlan implements OnInit {
 
  
   constructor(private planService:PlanService ,private router:Router , private route :ActivatedRoute, public pageTitleService:PageTitleService, public summaryService:SummaryService ,public stepperService:StepperService) {}
+ 
   ngOnInit(): void {
      this.plan = this.planService.getPlans();
   this.route.params.subscribe(params => {
@@ -32,14 +33,21 @@ export class ChoosePlan implements OnInit {
       this.pageTitleService.setServiceName(type);
     }
   });
+  
+  let savedData = this.summaryService.summaryData(); 
+    if (savedData && savedData.planId !== 0) {
+      this.selectedPlanId = savedData.planId;
+      this.stepperService.setStepValid(true);
+    }
  
 }
   
 
   selectPlan(id: number , name: string) {
     this.selectedPlanId = id;
-    this.summaryService.updateSummary({ planName: name });
+    this.summaryService.updateSummary({ planId: id,planName: name });
       this.stepperService.setStepValid(true); 
+    
   }
 
    onNext() {

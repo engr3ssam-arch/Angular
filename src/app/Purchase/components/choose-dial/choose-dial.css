@@ -1,0 +1,36 @@
+.dial-card {
+  border: 1px solid #f2f2f2 !important;
+  border-radius: 15px !important;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.selected-card {
+  border: 2px solid #e80000 !important;
+  background-color: #fffafa !important;
+}
+
+.custom-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-checkbox:checked {
+  background-color: #e80000;
+  border-color: #e80000;
+}
+
+.btn-next {
+  background-color: #fce4e4;
+  border: none;
+}
+
+.btn-next:enabled {
+  background-color: #e80000;
+}
+
+.btn-outline-danger {
+  border-width: 2px;
+}/*# sourceMappingURL=choose-dial.css.map */

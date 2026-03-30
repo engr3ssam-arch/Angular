@@ -17,10 +17,10 @@
         <p class="fw-bold">Choose Reservation Type</p>
         <div class="d-flex gap-5">
           <label class="d-flex align-items-center gap-2">
-            <input type="radio" name="res" class="red-radio" (change)="onResType('Pool Selection')"> Pool Selection
+            <input type="radio" name="res" class="red-radio" (change)="onResType('Pool Selection')" [checked]="resType === 'Pool Selection'"> Pool Selection
           </label>
           <label class="d-flex align-items-center gap-2">
-            <input type="radio" name="res" class="red-radio" (change)="onResType('Manual Input')"> Manual Input
+            <input type="radio" name="res" class="red-radio" (change)="onResType('Manual Input')" [checked]="resType === 'Manual Input'"> Manual Input
           </label>
         </div>
       </div>

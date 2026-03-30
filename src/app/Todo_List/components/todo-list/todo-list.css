@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.card-layout {
+  width: 550px;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}/*# sourceMappingURL=todo-list.css.map */
