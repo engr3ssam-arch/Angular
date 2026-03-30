@@ -1,16 +1,23 @@
-.form-control, .form-select {
-  border-radius: 10px;
-  border: 1px solid #eee;
-  padding: 10px;
+.custom-radio .form-check-input:checked {
+  background-color: #e31e24;
+  border-color: #e31e24;
 }
 
-.btn-next {
-  background-color: #f8d7da;
-  border: none;
-  color: #dc3545 !important;
+.custom-radio .form-check-input {
+  border-color: #ccc;
+  cursor: pointer;
 }
 
-.btn-next:not([disabled]) {
-  background-color: #f44336;
-  color: white !important;
+.rounded-pill {
+  border-radius: 50px !important;
+}
+
+.input-group .form-select {
+  border-top-left-radius: 50px !important;
+  border-bottom-left-radius: 50px !important;
+}
+
+.input-group .form-control {
+  border-top-right-radius: 50px !important;
+  border-bottom-right-radius: 50px !important;
 }/*# sourceMappingURL=customer-info.css.map */

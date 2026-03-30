@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { AsyncPipe, CommonModule} from '@angular/common';
+import { Component, OnInit, signal } from '@angular/core';
+import { CommonModule} from '@angular/common';
 import { Router } from '@angular/router';
-import { Stepper } from "../stepper/stepper";
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
-import { Summary } from "../summary/summary";
 import { SummaryService } from '../../service/summary Service/summary-service';
 import { StepperService } from '../../service/stepper Service/stepper-service';
 
@@ -13,37 +11,53 @@ import { StepperService } from '../../service/stepper Service/stepper-service';
   templateUrl: './customer-info.html',
   styleUrl: './customer-info.scss',
 })
-export class CustomerInfo {
-   currentStep: number = 3; 
-     pageTitle: string = '';
+export class CustomerInfo implements OnInit{
+currentStep: number = 3; 
+pageTitle: string = '';
+citizenshipStatus: string = 'citizen';
+billAccountCase: string = 'new'; 
+isDataApplied = signal(false);     
+
+ 
+constructor(private router: Router ,public pageTitleService:PageTitleService ,public summaryService:SummaryService ,public stepperService: StepperService ) {}
 
 
-  citizenshipStatus: string | null = null;
- constructor(private router: Router ,public pageTitleService:PageTitleService ,public summaryService:SummaryService ,public stepperService: StepperService ) {}
- setCitizenship(status: string) {
-    this.citizenshipStatus = status;
+ngOnInit(): void {
+    let saved = this.summaryService.summaryData();
+    if (saved.citizenStatus) {
+      this.citizenshipStatus = saved.citizenStatus.toLowerCase();
+    }
   }
+
+
+
+ onApply() {
+  this.isDataApplied.set(true); 
+  this.stepperService.setStepValid(true); 
+   this.summaryService.updateSummary({ 
+    citizenStatus: this.citizenshipStatus 
+  });
+}
+
+setCitizenship(status: string) {
+  this.citizenshipStatus = status;
+  this.isDataApplied.set(false); 
+}
  
    onNext() {
-   
-    
-      this.router.navigate(['/choose plan']);
-    
+    this.stepperService.setStepValid(true);
   }
+
   goToStep(step: number) {
   this.currentStep = step;
   
 }
+
 onCitizenStatus(type: string) {
   this.summaryService.updateSummary({ citizenStatus: type });
     this.stepperService.setStepValid(true); 
    
 }
-
-
-
-
-
 
 
 
