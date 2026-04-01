@@ -62,9 +62,8 @@
         <button class="btn btn-dark w-100 rounded-pill" (click)="onApply()">Apply</button>
       </div>
     </div>
-  </div>
-
-  <div *ngIf="isDataApplied()" class="animate-fade mt-5 border-top pt-4">
+    
+     <div *ngIf="isDataApplied()" class="animate-fade mt-5 border-top pt-4">
     
     <h5 class="fw-bold mb-4">Customer Information</h5>
     <div class="row g-3 mb-4">
@@ -79,21 +78,21 @@
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">First Name</label>
-        <input type="text" class="form-control rounded-pill" value="Amina">
+        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.firstName" name="firstName" (ngModelChange)="summaryService.updateSummary({ firstName: $event })">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Middle Name</label>
-        <input type="text" class="form-control rounded-pill" value="Osama">
+        <input type="text" class="form-control rounded-pill" >
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Last Name</label>
-        <input type="text" class="form-control rounded-pill" value="Ahmed">
+        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.lastName" name="lastName" (ngModelChange)="summaryService.updateSummary({ lastName: $event })">
       </div>
 
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">Telephone Number</label>
-        <input type="text" class="form-control rounded-pill" value="01222111555">
+        <input type="text" class="form-control rounded-pill" >
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Birth Date</label>
@@ -106,7 +105,7 @@
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">Email</label>
-        <input type="email" class="form-control rounded-pill" value="Amina@gmail.com">
+        <input type="email" class="form-control rounded-pill" value="Amina@gmail.com" [(ngModel)]="custData.email" name="email" (ngModelChange)="summaryService.updateSummary({ email: $event })">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Trade</label>
@@ -128,14 +127,14 @@
         <label class="form-check-label" for="id1">Passport</label>
       </div>
       <div class="form-check custom-radio">
-        <input class="form-check-input" type="radio" name="idType" id="id2" checked>
+        <input class="form-check-input" type="radio" name="idType" id="id2" checked >
         <label class="form-check-label" for="id2">National ID</label>
       </div>
     </div>
     <div class="row g-3 mb-4">
         <div class="col-md-4">
             <label class="small fw-bold">National ID Number</label>
-            <input type="text" class="form-control rounded-pill" value="2978654322123">
+            <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.nationalId" name="nationalId" (ngModelChange)="summaryService.updateSummary({nationalId: $event })">
         </div>
         <div class="col-md-4">
             <label class="small fw-bold">Expiration Date</label>
@@ -147,15 +146,15 @@
     <div class="row g-3 mb-4">
       <div class="col-md-2">
         <label class="small fw-bold">Building No</label>
-        <input type="text" class="form-control rounded-pill" value="4">
+        <input type="text" class="form-control rounded-pill" >
       </div>
       <div class="col-md-2">
         <label class="small fw-bold">Flat No</label>
-        <input type="text" class="form-control rounded-pill" value="7">
+        <input type="text" class="form-control rounded-pill" >
       </div>
       <div class="col-md-8">
         <label class="small fw-bold">Street Address</label>
-        <input type="text" class="form-control rounded-pill" value="23 Ahmed Oraby">
+        <input type="text" class="form-control rounded-pill" >
       </div>
     </div>
 
@@ -165,4 +164,133 @@
     </div>
 
   </div>
-</div>
+  </div>
+
+   <div *ngIf="citizenshipStatus === 'foreigner'">
+    <div class="mb-4">
+      <p class="fw-bold mb-2">What Is Customer Type?</p>
+      <div class="d-flex gap-4">
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="custType" id="t1" checked>
+          <label class="form-check-label" for="t1">Consumer</label>
+        </div>
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="custType" id="t2">
+          <label class="form-check-label" for="t2">Corporate</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <p class="fw-bold mb-2">Bill Account Case?</p>
+      <div class="d-flex gap-4">
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="bill" id="b1" >
+          <label class="form-check-label" for="b1">New Bill Account</label>
+        </div>
+        <div class="form-check custom-radio">
+          <input class="form-check-input" type="radio" name="bill" id="b2" >
+          <label class="form-check-label" for="b2">Existing Bill Account</label>
+        </div>
+      </div>
+    </div>
+
+   <div class="row g-3 mb-4">
+        <h5 class="fw-bold mb-3 mt-5">Customer Information</h5>
+      <div class="col-md-4">
+        <label class="small fw-bold">Nationality</label>
+        <select class="form-select rounded-pill"><option>Egyptian</option></select>
+      </div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Title</label>
+        <select class="form-select rounded-pill"><option>MR.</option></select>
+      </div>
+      <div class="col-12"></div>
+      <div class="col-md-4">
+        <label class="small fw-bold">First Name</label>
+        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.firstName" name="firstName" (ngModelChange)="onInputChange()">
+      </div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Middle Name</label>
+        <input type="text" class="form-control rounded-pill" >
+      </div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Last Name</label>
+        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.lastName" name="lastName" (ngModelChange)="onInputChange()">
+      </div>
+
+      <div class="col-12"></div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Telephone Number</label>
+        <input type="text" class="form-control rounded-pill" >
+      </div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Birth Date</label>
+        <input type="date" class="form-control rounded-pill" >
+      </div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Customer Group</label>
+        <select class="form-select rounded-pill"><option>Customer</option></select>
+      </div>
+      <div class="col-12"></div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Email</label>
+        <input type="email" class="form-control rounded-pill"[(ngModel)]="custData.email"name="email" (ngModelChange)="onInputChange()">
+      </div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Trade</label>
+        <input type="text" class="form-control rounded-pill" >
+      </div>
+      <div class="col-md-4">
+        <label class="small fw-bold">Search Code</label>
+        <input type="text" class="form-control rounded-pill">
+      </div>
+    </div>
+      <div>
+            <h5 class="fw-bold mb-3 mt-5">ID Information</h5>
+    <p class="small fw-bold mb-2">What is Customer type?</p>
+    <div class="d-flex gap-3 mb-3">
+      <div class="form-check custom-radio">
+        <input class="form-check-input" type="radio" name="idType" id="id1">
+        <label class="form-check-label" for="id1">Passport</label>
+      </div>
+      <div class="form-check custom-radio">
+        <input class="form-check-input" type="radio" name="idType" id="id2" checked>
+        <label class="form-check-label" for="id2">National ID</label>
+      </div>
+    </div>
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <label class="small fw-bold">National ID Number</label>
+            <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.nationalId" name="nationalId" (ngModelChange)="onInputChange()">
+        </div>
+        <div class="col-md-4">
+            <label class="small fw-bold">Expiration Date</label>
+            <input type="date" class="form-control rounded-pill">
+        </div>
+    </div>
+
+    <h5 class="fw-bold mb-3 mt-5">Address Details</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-md-2">
+        <label class="small fw-bold">Building No</label>
+        <input type="text" class="form-control rounded-pill" >
+      </div>
+      <div class="col-md-2">
+        <label class="small fw-bold">Flat No</label>
+        <input type="text" class="form-control rounded-pill" >
+      </div>
+      <div class="col-md-8">
+        <label class="small fw-bold">Street Address</label>
+        <input type="text" class="form-control rounded-pill">
+      </div>
+    </div>
+
+    <h5 class="fw-bold mb-3 mt-5">Contract Details</h5>
+    <div class="upload-area border-dashed p-4 text-center rounded-4 bg-light mb-3">
+    <p class="mb-0">Drag files to Upload <span class="text-danger fw-bold" style="cursor: pointer;">Click Here</span></p>
+    </div>
+      </div>
+    </div>
+
+  </div>

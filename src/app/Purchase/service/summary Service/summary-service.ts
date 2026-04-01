@@ -11,8 +11,11 @@ export class SummaryService {
     planName:'',
     bundleName: '',
     planId: 0,
-    bundleId: 0
-   
+    bundleId: 0 ,
+    firstName: '',
+   lastName: '',
+   email: '',
+   nationalId: ''
   });
 
   updateSummary(newData:any) {
