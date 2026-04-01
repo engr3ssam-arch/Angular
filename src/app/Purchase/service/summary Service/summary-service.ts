@@ -12,10 +12,18 @@ export class SummaryService {
     bundleName: '',
     planId: 0,
     bundleId: 0 ,
-    firstName: '',
-   lastName: '',
-   email: '',
-   nationalId: ''
+   firstName: '',
+  lastName: '',
+  middleName: '', 
+  email: '',
+  nationalId: '',
+  telephoneNumber: '', 
+  birthDate: '', 
+  buildingNo: '',
+  flatNo: '', 
+  streetAddress: '', 
+  trade: '',
+  searchCode: '' 
   });
 
   updateSummary(newData:any) {

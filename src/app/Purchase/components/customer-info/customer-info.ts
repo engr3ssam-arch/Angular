@@ -36,6 +36,10 @@ ngOnInit(): void {
     } else {
       this.stepperService.setStepValid(false);
     }
+    this.custData = {   ...this.custData,  ...saved  };
+  
+           
+  
 }
 
 
@@ -50,7 +54,7 @@ ngOnInit(): void {
     nationalId: this.custData.nationalId
   });
   this.stepperService.setStepValid(true);
-console.log("Service Signal Value:", this.stepperService.isStepValid());
+
 }
 
 setCitizenship(status: string) {
@@ -107,5 +111,8 @@ onInputChange() {
     email: this.custData.email,
     nationalId: this.custData.nationalId
   });
+  if (this.citizenshipStatus === 'foreigner') {
+    this.stepperService.setStepValid(true);
+  }
 }
 }

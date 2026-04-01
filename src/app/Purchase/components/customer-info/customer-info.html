@@ -82,7 +82,7 @@
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Middle Name</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" name="middleName" (ngModelChange)="onInputChange()">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Last Name</label>
@@ -92,11 +92,11 @@
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">Telephone Number</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" name="telephoneNumber" (ngModelChange)="onInputChange()">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Birth Date</label>
-        <input type="date" class="form-control rounded-pill" >
+        <input type="date" class="form-control rounded-pill" name="birthDate" (ngModelChange)="onInputChange()">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Customer Group</label>
@@ -109,11 +109,11 @@
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Trade</label>
-        <input type="text" class="form-control rounded-pill" value="Customer Service">
+        <input type="text" class="form-control rounded-pill" value="Customer Service" name="trade" (ngModelChange)="onInputChange()">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Search Code</label>
-        <input type="text" class="form-control rounded-pill" value="Customer Service">
+        <input type="text" class="form-control rounded-pill" value="Customer Service" name="searchCode" (ngModelChange)="onInputChange()">
       </div>
     </div>
 
@@ -146,7 +146,7 @@
     <div class="row g-3 mb-4">
       <div class="col-md-2">
         <label class="small fw-bold">Building No</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" name="buildingNo" >
       </div>
       <div class="col-md-2">
         <label class="small fw-bold">Flat No</label>
@@ -212,7 +212,7 @@
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Middle Name</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" name="middleName" (ngModelChange)="onInputChange()" >
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Last Name</label>
@@ -222,11 +222,11 @@
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">Telephone Number</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" name="telephoneNumber" (ngModelChange)="onInputChange()">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Birth Date</label>
-        <input type="date" class="form-control rounded-pill" >
+        <input type="date" class="form-control rounded-pill" name="birthDate"(ngModelChange)="onInputChange()">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Customer Group</label>
@@ -239,11 +239,11 @@
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Trade</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" name="trade" (ngModelChange)="onInputChange()" >
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Search Code</label>
-        <input type="text" class="form-control rounded-pill">
+        <input type="text" class="form-control rounded-pill" searchCode (ngModelChange)="onInputChange()" name="searchCode">
       </div>
     </div>
       <div>
@@ -274,7 +274,7 @@
     <div class="row g-3 mb-4">
       <div class="col-md-2">
         <label class="small fw-bold">Building No</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" name="buildingNo" (ngModelChange)="onInputChange()" >
       </div>
       <div class="col-md-2">
         <label class="small fw-bold">Flat No</label>
