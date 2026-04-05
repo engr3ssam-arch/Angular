@@ -62,8 +62,9 @@ export class ChooseDial implements OnInit {
   
 }
 
-onResDial(type: string) {
-  this.summaryService.updateSummary({ resDial: type });
+onResDial(dial: DialsList) {
+  this.summaryService.updateSummary({ resDial: dial.number,poolName: dial.poolName,dialGroup: dial.dialGroup,
+    dialId: dial.id });
     this.stepperService.setStepValid(true); 
    
 }

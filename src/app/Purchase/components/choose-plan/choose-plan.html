@@ -11,7 +11,7 @@
 
           <div class="row g-3">
             <div class="col-md-6" *ngFor="let plan of plan">
-              <div class="plan-card" [class.selected]="selectedPlanId === plan.id" (click)="selectPlan(plan.id , plan.name)">
+              <div class="plan-card" [class.selected]="selectedPlanId === plan.id" (click)="selectPlan(plan.id , plan.name, plan.logo)">
                 <div class="d-flex justify-content-between align-items-start">
                   <img [src]="plan.logo" [alt]="plan.name" class="plan-logo">
                   <div class="custom-radio-indicator">

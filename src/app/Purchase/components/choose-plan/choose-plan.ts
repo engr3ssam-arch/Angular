@@ -43,9 +43,9 @@ export class ChoosePlan implements OnInit {
 }
   
 
-  selectPlan(id: number , name: string) {
+  selectPlan(id: number , name: string, logo: string) {
     this.selectedPlanId = id;
-    this.summaryService.updateSummary({ planId: id,planName: name });
+    this.summaryService.updateSummary({ planId: id,planName: name ,planLogo: logo});
       this.stepperService.setStepValid(true); 
     
   }

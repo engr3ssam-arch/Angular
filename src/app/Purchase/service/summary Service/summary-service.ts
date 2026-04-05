@@ -7,8 +7,12 @@ export class SummaryService {
   summaryData = signal({
     resType: '',
     resDial: '',
+    poolName: '',
+    dialId: '',
+    dialGroup:'',
     citizenStatus:'',
     planName:'',
+    planLogo: '',
     bundleName: '',
     planId: 0,
     bundleId: 0 ,

@@ -41,3 +41,32 @@
      transform: translateY(0); 
     }
 }
+
+
+.cut-card {
+  background-color: #f8f9fa; 
+  border: 2px dashed #f0f0f0;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  width: 100%;
+  clip-path: polygon(0% 0%, 85% 0%, 100% 30%, 100% 100%, 0% 100%);
+}
+
+
+.cut-card:hover {
+  background-color: #f0f0f0;
+}
+.color-title {
+  color: #333;
+  font-size: 1.1rem;
+}
+.detail-row label {
+  display: block;
+  font-size: 10px;
+  color: #999;
+  text-transform: capitalize;
+}
+.border-end-dashed {
+  border-right: 1px dashed #ddd !important;
+}
