@@ -32,25 +32,25 @@ export class PlanService {
       features: ['ADSL Bundle Promos', 'Conquer Promo Bundle']
     },
     {
-      id: 4,
+      id: 5,
       name: 'Plan Name Goes Here',
       logo: 'images/e&.png',
       features: ['ADSL Bundle Promos', 'Conquer Promo Bundle']
     },
     {
-      id: 4,
+      id: 6,
       name: 'Plan Name Goes Here',
       logo: 'images/e&.png',
       features: ['ADSL Bundle Promos', 'Conquer Promo Bundle']
     },
     {
-      id: 4,
+      id: 7,
       name: 'Plan Name Goes Here',
       logo: 'images/e&.png',
       features: ['ADSL Bundle Promos', 'Conquer Promo Bundle']
     },
     {
-      id: 4,
+      id: 8,
       name: 'Plan Name Goes Here',
       logo: 'images/e&.png',
       features: ['ADSL Bundle Promos', 'Conquer Promo Bundle']

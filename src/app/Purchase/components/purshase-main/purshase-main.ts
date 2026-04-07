@@ -40,4 +40,7 @@ export class PurshaseMain {
       this.stepperService.setStepValid(false);
     }
   }
+
+
+
 }

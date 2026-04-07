@@ -22,7 +22,16 @@ custData = {
   firstName: '',
   lastName: '',
   email: 'Name@gmail.com', 
-  nationalId: '2978654322123'
+  nationalId: '2978654322123',
+  middleName:'',
+   telephoneNumber: '', 
+  birthDate: '', 
+  buildingNo: '',
+  flatNo: '', 
+  streetAddress: '', 
+  trade: '',
+  searchCode: '' 
+
 };
  
 constructor(private router: Router ,public pageTitleService:PageTitleService ,public summaryService:SummaryService ,public stepperService: StepperService ) {}
@@ -43,18 +52,27 @@ ngOnInit(): void {
 }
 
 
- onApply() {
- this.isDataApplied.set(true); 
+onApply() {
 
+  this.isDataApplied.set(true); 
+  
   this.summaryService.updateSummary({ 
     citizenStatus: this.citizenshipStatus,
     firstName: this.custData.firstName,
     lastName: this.custData.lastName,
     email: this.custData.email,
-    nationalId: this.custData.nationalId
+    nationalId: this.custData.nationalId,
+    middleName: this.custData.middleName,
+    telephoneNumber: this.custData.telephoneNumber, 
+    birthDate: this.custData.birthDate, 
+    buildingNo: this.custData.buildingNo,
+    flatNo: this.custData.flatNo, 
+    streetAddress: this.custData.streetAddress, 
+    trade: this.custData.trade,
+    searchCode: this.custData.searchCode
   });
-  this.stepperService.setStepValid(true);
 
+  this.stepperService.setStepValid(false); 
 }
 
 setCitizenship(status: string) {
@@ -108,11 +126,34 @@ onInputChange() {
   this.summaryService.updateSummary({ 
     firstName: this.custData.firstName,
     lastName: this.custData.lastName,
+    middleName: this.custData.middleName,
     email: this.custData.email,
-    nationalId: this.custData.nationalId
+    nationalId: this.custData.nationalId,
+     telephoneNumber:this.custData.telephoneNumber, 
+  birthDate:this.custData.birthDate, 
+  buildingNo:this.custData.buildingNo,
+  flatNo: this.custData.flatNo, 
+  streetAddress: this.custData.streetAddress, 
+  trade: this.custData.trade,
+  searchCode: this.custData.searchCode
+
   });
   if (this.citizenshipStatus === 'foreigner') {
     this.stepperService.setStepValid(true);
   }
 }
+
+
+checkValidity(event: any) {
+  const value = event.target.value;
+  if (!value || value.trim() === '') {
+    this.stepperService.setStepValid(false); 
+  } else {
+    this.stepperService.setStepValid(true); 
+  }
+}
+
+
+
+
 }

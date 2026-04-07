@@ -5,12 +5,13 @@ import { Router } from '@angular/router';
 import { SummaryService } from '../../service/summary Service/summary-service';
 import { PageTitleService } from '../../service/pageTitle Service/page-title-service';
 import { StepperService } from '../../service/stepper Service/stepper-service';
+import { FormsModule } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-purchase-stepper',
-  imports: [NgIf, CommonModule],
+  imports: [NgIf, CommonModule ,FormsModule],
   templateUrl: './purchase-stepper.html',
   styleUrl: './purchase-stepper.scss',
 })
@@ -43,7 +44,7 @@ onResType(type: string) {
   this.summaryService.updateSummary({ resType: type });
   this.stepperService.setStepValid(true); 
   
-   
+ 
 }
 
 

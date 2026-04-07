@@ -16,14 +16,13 @@
     </div>
    
   <div class="cut-card mb-3" *ngIf="summaryService.summaryData().resDial">
-  <div >
-    <h6 class=" fw-bold mb-3">{{ summaryService.summaryData().resDial }}</h6>
+   <h6 class=" fw-bold mb-3">{{ summaryService.summaryData().resDial }}</h6>
     
     <div class="row g-0 text-start detail-row">
       <div class="col-4 border-end-dashed">
         <label>Pool Type</label>
         <div class="fw-bold value text-truncate">
-          {{ summaryService.summaryData().poolName  }}
+          {{ summaryService.summaryData().poolName }}
         </div>
       </div>
       
@@ -40,18 +39,28 @@
       </div>
     </div>
   </div>
-</div>
+
 
     <div class="summary-item cut-card" *ngIf="summaryService.summaryData().citizenStatus">
       <p class="text-muted small mb-0 color-title">Citizenship</p>
       <p class="  detail-row">{{ summaryService.summaryData().citizenStatus }}</p>
     </div>
-<div class="cut-card">   
+     <div class="cut-card">   
     <div class="summary-item " *ngIf="summaryService.summaryData().firstName">
       <p class="text-muted small mb-0 color-title">Customer Name</p>
       <p class=" detail-row">
-        {{ summaryService.summaryData().firstName }} {{ summaryService.summaryData().lastName }}
+        {{ summaryService.summaryData().firstName }} {{ summaryService.summaryData().middleName }} {{ summaryService.summaryData().lastName }}
       </p>
+    </div>
+
+      <div class="summary-item " *ngIf="summaryService.summaryData().birthDate">
+      <p class="text-muted small mb-0 color-title">Birth Date</p>
+      <p class=" detail-row">{{ summaryService.summaryData().birthDate }}</p>
+    </div>
+
+    <div class="summary-item " *ngIf="summaryService.summaryData().email">
+      <p class="text-muted small mb-0 color-title">Email</p>
+      <p class=" detail-row">{{ summaryService.summaryData().email }}</p>
     </div>
 
     <div class="summary-item " *ngIf="summaryService.summaryData().nationalId">
@@ -59,10 +68,22 @@
       <p class=" detail-row">{{ summaryService.summaryData().nationalId }}</p>
     </div>
 
-    <div class="summary-item " *ngIf="summaryService.summaryData().email">
-      <p class="text-muted small mb-0 color-title">Email</p>
-      <p class=" detail-row">{{ summaryService.summaryData().email }}</p>
+ <div class="summary-item " *ngIf="summaryService.summaryData().trade">
+      <p class="text-muted small mb-0 color-title">Trade </p>
+      <p class=" detail-row">{{ summaryService.summaryData().trade }}</p>
     </div>
+ <div class="summary-item " *ngIf="summaryService.summaryData().searchCode">
+      <p class="text-muted small mb-0 color-title">Search Code</p>
+      <p class=" detail-row">{{ summaryService.summaryData().searchCode}}</p>
+    </div>
+ <div class="summary-item " *ngIf="summaryService.summaryData().buildingNo">
+      <p class="text-muted small mb-0 color-title"> Building Address</p>
+      <p class=" detail-row"> Bld: {{ summaryService.summaryData().buildingNo}} ,   FlatNo:  {{ summaryService.summaryData().flatNo}} ,   streetAddress: {{ summaryService.summaryData().streetAddress}} </p>
+    </div>
+
+
+
+
 </div>
     <div class="summary-item cut-card" *ngIf="summaryService.summaryData().planName">
       <p class="text-muted small mb-0 color-title">Choose Plan</p>
@@ -78,7 +99,12 @@
       <p class=" detail-row">{{ summaryService.summaryData().bundleName }}</p>
     </div>
 
-  </div> <div class="text-center py-5 animate-fade" 
+
+
+  </div> 
+</div>
+
+  <div class="text-center py-5 animate-fade  " 
        *ngIf="!summaryService.summaryData().resType && !summaryService.summaryData().firstName">
     <div class="empty-icon-wrapper mb-3">
       <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#e0e0e0" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
@@ -89,5 +115,6 @@
     <p class="text-muted mb-0">choose items</p>
     <p class="text-muted small">to see the information here!</p>
   </div>
+
 
 </div>

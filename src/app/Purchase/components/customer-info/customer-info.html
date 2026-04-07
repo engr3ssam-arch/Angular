@@ -78,25 +78,25 @@
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">First Name</label>
-        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.firstName" name="firstName" (ngModelChange)="summaryService.updateSummary({ firstName: $event })">
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" [(ngModel)]="custData.firstName" name="firstName" (ngModelChange)="summaryService.updateSummary({ firstName: $event })" required="">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Middle Name</label>
-        <input type="text" class="form-control rounded-pill" name="middleName" (ngModelChange)="onInputChange()">
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" name="middleName" (ngModelChange)="onInputChange() " [(ngModel)]="custData.middleName">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Last Name</label>
-        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.lastName" name="lastName" (ngModelChange)="summaryService.updateSummary({ lastName: $event })">
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" [(ngModel)]="custData.lastName" name="lastName" (ngModelChange)="summaryService.updateSummary({ lastName: $event })" required="">
       </div>
 
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">Telephone Number</label>
-        <input type="text" class="form-control rounded-pill" name="telephoneNumber" (ngModelChange)="onInputChange()">
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" name="telephoneNumber" (ngModelChange)="onInputChange()" [(ngModel)]="custData.telephoneNumber" required>
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Birth Date</label>
-        <input type="date" class="form-control rounded-pill" name="birthDate" (ngModelChange)="onInputChange()">
+        <input type="date" class="form-control rounded-pill" (input)="checkValidity($event)" name="birthDate" (ngModelChange)="onInputChange()" required [(ngModel)]="custData.birthDate">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Customer Group</label>
@@ -105,15 +105,15 @@
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">Email</label>
-        <input type="email" class="form-control rounded-pill" value="Amina@gmail.com" [(ngModel)]="custData.email" name="email" (ngModelChange)="summaryService.updateSummary({ email: $event })">
+        <input type="email" class="form-control rounded-pill" (input)="checkValidity($event)" value="Amina@gmail.com" [(ngModel)]="custData.email" name="email" (ngModelChange)="summaryService.updateSummary({ email: $event })" required>
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Trade</label>
-        <input type="text" class="form-control rounded-pill" value="Customer Service" name="trade" (ngModelChange)="onInputChange()">
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" value="Customer Service" name="trade" (ngModelChange)="onInputChange()" [(ngModel)]="custData.trade" (ngModelChange)="summaryService.updateSummary({ trade: $event })" required>
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Search Code</label>
-        <input type="text" class="form-control rounded-pill" value="Customer Service" name="searchCode" (ngModelChange)="onInputChange()">
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" value="Customer Service" name="searchCode" (ngModelChange)="onInputChange()" [(ngModel)]="custData.searchCode"  (ngModelChange)="summaryService.updateSummary({ searchCode: $event })" required>
       </div>
     </div>
 
@@ -134,7 +134,7 @@
     <div class="row g-3 mb-4">
         <div class="col-md-4">
             <label class="small fw-bold">National ID Number</label>
-            <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.nationalId" name="nationalId" (ngModelChange)="summaryService.updateSummary({nationalId: $event })">
+            <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" [(ngModel)]="custData.nationalId" name="nationalId" (ngModelChange)="summaryService.updateSummary({nationalId: $event })">
         </div>
         <div class="col-md-4">
             <label class="small fw-bold">Expiration Date</label>
@@ -146,15 +146,15 @@
     <div class="row g-3 mb-4">
       <div class="col-md-2">
         <label class="small fw-bold">Building No</label>
-        <input type="text" class="form-control rounded-pill" name="buildingNo" >
+        <input type="text" class="form-control rounded-pill" name="buildingNo" (input)="checkValidity($event)" [(ngModel)]="custData.buildingNo" (ngModelChange)="summaryService.updateSummary({buildingNo: $event })">
       </div>
       <div class="col-md-2">
         <label class="small fw-bold">Flat No</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" [(ngModel)]="custData.flatNo" (ngModelChange)="summaryService.updateSummary({flatNo: $event })" >
       </div>
       <div class="col-md-8">
         <label class="small fw-bold">Street Address</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" [(ngModel)]="custData.streetAddress" (ngModelChange)="summaryService.updateSummary({streetAddress: $event })">
       </div>
     </div>
 
@@ -208,25 +208,25 @@
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">First Name</label>
-        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.firstName" name="firstName" (ngModelChange)="onInputChange()">
+        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.firstName" name="firstName" (ngModelChange)="onInputChange()" (input)="checkValidity($event)" (ngModelChange)="summaryService.updateSummary({firstName: $event })">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Middle Name</label>
-        <input type="text" class="form-control rounded-pill" name="middleName" (ngModelChange)="onInputChange()" >
+        <input type="text" class="form-control rounded-pill" name="middleName" (ngModelChange)="onInputChange()"(input)="checkValidity($event)" (ngModelChange)="summaryService.updateSummary({middleName: $event })" >
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Last Name</label>
-        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.lastName" name="lastName" (ngModelChange)="onInputChange()">
+        <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.lastName" name="lastName" (ngModelChange)="onInputChange()" (input)="checkValidity($event)" (ngModelChange)="summaryService.updateSummary({lastName: $event })">
       </div>
 
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">Telephone Number</label>
-        <input type="text" class="form-control rounded-pill" name="telephoneNumber" (ngModelChange)="onInputChange()">
+        <input type="text" class="form-control rounded-pill" name="telephoneNumber" (ngModelChange)="onInputChange()" (input)="checkValidity($event)"(ngModelChange)="summaryService.updateSummary({telephoneNumber: $event })" >
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Birth Date</label>
-        <input type="date" class="form-control rounded-pill" name="birthDate"(ngModelChange)="onInputChange()">
+        <input type="date" class="form-control rounded-pill" name="birthDate"(ngModelChange)="onInputChange()" (input)="checkValidity($event)" (ngModelChange)="summaryService.updateSummary({birthDate: $event })">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Customer Group</label>
@@ -235,15 +235,15 @@
       <div class="col-12"></div>
       <div class="col-md-4">
         <label class="small fw-bold">Email</label>
-        <input type="email" class="form-control rounded-pill"[(ngModel)]="custData.email"name="email" (ngModelChange)="onInputChange()">
+        <input type="email" class="form-control rounded-pill"[(ngModel)]="custData.email"name="email" (ngModelChange)="onInputChange()" (ngModelChange)="summaryService.updateSummary({email: $event })">
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Trade</label>
-        <input type="text" class="form-control rounded-pill" name="trade" (ngModelChange)="onInputChange()" >
+        <input type="text" class="form-control rounded-pill" name="trade" (ngModelChange)="onInputChange()" (input)="checkValidity($event)" (ngModelChange)="summaryService.updateSummary({trade: $event })" >
       </div>
       <div class="col-md-4">
         <label class="small fw-bold">Search Code</label>
-        <input type="text" class="form-control rounded-pill" searchCode (ngModelChange)="onInputChange()" name="searchCode">
+        <input type="text" class="form-control rounded-pill" searchCode (ngModelChange)="onInputChange()" name="searchCode" (input)="checkValidity($event)" (ngModelChange)="summaryService.updateSummary({searchCode: $event })">
       </div>
     </div>
       <div>
@@ -255,14 +255,14 @@
         <label class="form-check-label" for="id1">Passport</label>
       </div>
       <div class="form-check custom-radio">
-        <input class="form-check-input" type="radio" name="idType" id="id2" checked>
+        <input class="form-check-input" type="radio" name="idType" id="id2" checked >
         <label class="form-check-label" for="id2">National ID</label>
       </div>
     </div>
     <div class="row g-3 mb-4">
         <div class="col-md-4">
             <label class="small fw-bold">National ID Number</label>
-            <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.nationalId" name="nationalId" (ngModelChange)="onInputChange()">
+            <input type="text" class="form-control rounded-pill" [(ngModel)]="custData.nationalId" name="nationalId" (ngModelChange)="onInputChange()" (input)="checkValidity($event)" (ngModelChange)="summaryService.updateSummary({nationalId: $event })">
         </div>
         <div class="col-md-4">
             <label class="small fw-bold">Expiration Date</label>
@@ -274,15 +274,15 @@
     <div class="row g-3 mb-4">
       <div class="col-md-2">
         <label class="small fw-bold">Building No</label>
-        <input type="text" class="form-control rounded-pill" name="buildingNo" (ngModelChange)="onInputChange()" >
+        <input type="text" class="form-control rounded-pill" name="buildingNo" (ngModelChange)="onInputChange()" (input)="checkValidity($event)" (ngModelChange)="summaryService.updateSummary({buildingNo: $event })">
       </div>
       <div class="col-md-2">
         <label class="small fw-bold">Flat No</label>
-        <input type="text" class="form-control rounded-pill" >
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" (ngModelChange)="onInputChange()" (ngModelChange)="summaryService.updateSummary({flatNo: $event })">
       </div>
       <div class="col-md-8">
         <label class="small fw-bold">Street Address</label>
-        <input type="text" class="form-control rounded-pill">
+        <input type="text" class="form-control rounded-pill" (input)="checkValidity($event)" (ngModelChange)="onInputChange()" (ngModelChange)="summaryService.updateSummary({streetAddress: $event })">
       </div>
     </div>
 
