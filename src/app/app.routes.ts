@@ -12,6 +12,7 @@ import { CustomerInfo } from './Purchase/components/customer-info/customer-info'
 import { ChoosePlan } from './Purchase/components/choose-plan/choose-plan';
 import { ChooseBundle } from './Purchase/components/choose-bundle/choose-bundle';
 import { PurshaseMain } from './Purchase/components/purshase-main/purshase-main';
+import { Users } from './Users/components/users/users';
 
 
 
@@ -19,6 +20,7 @@ export const routes: Routes = [
 
     { path: 'todo list', component:TodoList ,title:"todo list" },
     { path: 'invoice', component:Invoice ,title:"Purchase Invoice" },
+    { path: 'users', component:Users ,title:"USERS" },
     { path: 'purchase-main/:type', component:PurshaseMain },
     { path: 'purchase/:type', component: PurchaseStepper },
     { path: 'choose dial', component: ChooseDial },

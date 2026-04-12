@@ -1,0 +1,7 @@
+ .d-flex > div {
+    padding: 0 10px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    border-right: 1px solid #eee; 
+  }
