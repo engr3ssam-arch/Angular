@@ -20,5 +20,6 @@ export interface Users {
   companyName:string;
   department:string;
   jobTitle:string;
+  image:string;
   
 }

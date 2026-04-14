@@ -1,48 +1,70 @@
-<div class="container-fluid mt-4">
-  <div class="card shadow-sm border-0">
-    <div class="card-header bg-dark text-white p-3 text-center">
-      <h5 class="mb-0">User Management System</h5>
+<div class="card-body p-0" style="overflow-x: auto;">
+  <div style="min-width: 4500px;">
+    
+    <div class="d-flex bg-dark fw-bold  border-bottom p-3 text-white justify-content-center align-items-center">
+        <h5>User Management System</h5>
+    </div>
+<div class="d-flex bg-light fw-bold border-bottom p-3 text-secondary text-center align-items-center">
+      <div style="width: 80px;  flex: 0 0 auto;">Image</div>
+      <div style="width: 150px; flex: 0 0 auto;">First Name</div>
+      <div style="width: 150px; flex: 0 0 auto;">Last Name</div>
+      <div style="width: 150px; flex: 0 0 auto;">Maiden Name</div>
+      <div style="width: 80px;  flex: 0 0 auto;">Age</div>
+      <div style="width: 100px; flex: 0 0 auto;">Gender</div>
+      <div style="width: 250px; flex: 0 0 auto;">Email</div>
+      <div style="width: 200px; flex: 0 0 auto;">Phone</div>
+      <div style="width: 150px; flex: 0 0 auto;">Username</div>
+      <div style="width: 150px; flex: 0 0 auto;">Birth Date</div>
+      <div style="width: 100px; flex: 0 0 auto;">Height</div>
+      <div style="width: 100px; flex: 0 0 auto;">Weight</div>
+      <div style="width: 300px; flex: 0 0 auto;">Street Address</div>
+      <div style="width: 150px; flex: 0 0 auto;">City</div>
+      <div style="width: 150px; flex: 0 0 auto;">State</div>
+      <div style="width: 120px; flex: 0 0 auto;">Zip Code</div>
+      <div style="width: 350px; flex: 0 0 auto;">University</div>
+      <div style="width: 200px; flex: 0 0 auto;">Company Name</div>
+      <div style="width: 150px; flex: 0 0 auto;">Department</div>
+      <div style="width: 250px; flex: 0 0 auto;">Job Title</div>
+      <div style="width: 250px; flex: 0 0 auto;">Actions</div>
     </div>
 
-    <div class="card-body p-0" style="overflow-x: auto;">
-      
-      <div style="min-width: 4500px;">
-        
-        <div class="d-flex bg-light fw-bold border-bottom p-3 text-secondary text-center align-items-center">
-          <div style="width: 80px;  flex: 0 0 auto;">Image</div>
-          <div style="width: 150px; flex: 0 0 auto;">First Name</div>
-          <div style="width: 150px; flex: 0 0 auto;">Last Name</div>
-          <div style="width: 150px; flex: 0 0 auto;">Maiden Name</div>
-          <div style="width: 80px;  flex: 0 0 auto;">Age</div>
-          <div style="width: 100px; flex: 0 0 auto;">Gender</div>
-          <div style="width: 250px; flex: 0 0 auto;">Email</div>
-          <div style="width: 200px; flex: 0 0 auto;">Phone</div>
-          <div style="width: 150px; flex: 0 0 auto;">Username</div>
-          <div style="width: 150px; flex: 0 0 auto;">Birth Date</div>
-          <div style="width: 100px; flex: 0 0 auto;">Height</div>
-          <div style="width: 100px; flex: 0 0 auto;">Weight</div>
-          <div style="width: 300px; flex: 0 0 auto;">Street Address</div>
-          <div style="width: 150px; flex: 0 0 auto;">City</div>
-          <div style="width: 150px; flex: 0 0 auto;">State</div>
-          <div style="width: 120px; flex: 0 0 auto;">Zip Code</div>
-          <div style="width: 200px; flex: 0 0 auto;">Coordinates</div>
-          <div style="width: 350px; flex: 0 0 auto;">University</div>
-          <div style="width: 200px; flex: 0 0 auto;">Company Name</div>
-          <div style="width: 150px; flex: 0 0 auto;">Department</div>
-          <div style="width: 250px; flex: 0 0 auto;">Job Title</div>
-          <div style="width: 250px; flex: 0 0 auto;">Actions</div>
+       @for (item of users(); track item.id) {
+      <div class="d-flex bg-white border-bottom p-3 text-center align-items-center hover-row">
+        <div style="width: 80px; flex: 0 0 auto;">
+          <img [src]="item.image" class="rounded-circle border" width="45" height="45" alt="user">
         </div>
 
-        <div class="bg-white text-center p-5 text-muted border-bottom fw-bold" style="width: 4500px;">
-            No Data Added
-        </div>
+        <div style="width: 150px; flex: 0 0 auto;">{{ item.firstName || '-'  }}</div>
+        <div style="width: 150px; flex: 0 0 auto;">{{ item.lastName || '-' }}</div>
+        <div style="width: 150px; flex: 0 0 auto;">{{ item.maidenName || '-' }}</div>
+        <div style="width: 80px;  flex: 0 0 auto;">{{ item.age || '-' }}</div>
+        <div style="width: 100px; flex: 0 0 auto;">{{ item.gender || '-'  }}</div>
+        <div style="width: 250px; flex: 0 0 auto;" >{{ item.email || '-'  }}</div>
+        <div style="width: 200px; flex: 0 0 auto;">{{ item.phone || '-'  }}</div>
+        <div style="width: 150px; flex: 0 0 auto;">{{ item.userName || '-'  }}</div>
+        <div style="width: 150px; flex: 0 0 auto;">{{ item.birthDate || '-'  }}</div>
+        <div style="width: 100px; flex: 0 0 auto;">{{ item.height || '-'  }} cm</div>
+        <div style="width: 100px; flex: 0 0 auto;">{{ item.weight || '-'  }} kg</div>
+        <div style="width: 300px; flex: 0 0 auto;">{{ item.streetAdd || '-' }}</div>
+        <div style="width: 150px; flex: 0 0 auto;">{{ item.city || '-' }}</div>
+        <div style="width: 150px; flex: 0 0 auto;">{{ item.state || '-' }}</div>
+        <div style="width: 120px; flex: 0 0 auto;">{{ item.zipCode || '-'  }}</div>
+        <div style="width: 350px; flex: 0 0 auto;">{{ item.university || '-' }}</div>
+        <div style="width: 200px; flex: 0 0 auto;">{{ item.companyName || '-' }}</div>
+        <div style="width: 150px; flex: 0 0 auto;">{{ item.department || '-' }}</div>
+        <div style="width: 250px; flex: 0 0 auto;">{{ item.jobTitle || '-' }}</div>
 
+        <div style="width: 250px; flex: 0 0 auto;">
+          <button class="btn btn-sm btn-outline-info me-1">View</button>
+          <button class="btn btn-sm btn-outline-warning me-1">Edit</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(item.id!)">Delete</button>
+        </div>
       </div>
-    </div>
+    } @empty {
+      <div class="bg-white text-center p-5 text-muted border-bottom fw-bold" style="width: 4500px;">
+        No Data Available
+      </div>
+    }
 
-    <div class="card-footer bg-white p-3">
-      <button class="btn btn-success px-4 fw-bold shadow-sm">+ Add New User</button>
-    </div>
   </div>
 </div>
-
