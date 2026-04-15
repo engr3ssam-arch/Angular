@@ -9,7 +9,7 @@ import { tap } from 'rxjs';
 export class UserService {
 
   private httpService = inject(HttpclientService);
-  
+
   usersList = signal<Users[]>([]);
 
   getUser() {
@@ -19,7 +19,15 @@ export class UserService {
       })
     );
   }
-
+updateExistingUser(id: number, userData: Users) {
+  return this.httpService.update(id, userData, 'users').pipe(
+    tap((updatedUser) => {
+     this.usersList.update(current => 
+        current.map(u => u.id === id ? updatedUser : u)
+      );
+    })
+  );
+}
  
   deleteUser(id: number) {
     return this.httpService.delete(id, 'users').pipe(
@@ -28,4 +36,7 @@ export class UserService {
       })
     );
   }
+
+
+
 }
