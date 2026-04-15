@@ -12,9 +12,7 @@ constructor (private http:HttpClient) {}
 
  private baseUrl = 'https://dummyjson.com';
 
- usersList = signal<Users[]>([]);
-
-
+ 
  private getHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,50 +35,32 @@ constructor (private http:HttpClient) {}
  
   // 1. Get 
  
-  getUsers(endpoint: string = 'users', params?: any): Observable<any> {
+  get(endpoint: string , params?: any): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${endpoint}`, {
       headers: this.getHeaders(),
       params: this.buildParams(params)
-    }).pipe(
-      tap(res => {
-      this.usersList.set(res.users); 
-      })
-    );
+    });
   }
 
   // 2. Post 
-  addUser(endpoint: string = 'users/add', body: any): Observable<Users> {
-    return this.http.post<Users>(`${this.baseUrl}/${endpoint}`, body, {
+  add(endpoint: string , body: any): Observable<Users> {
+    return this.http.post<any>(`${this.baseUrl}/${endpoint}`, body, {
       headers: this.getHeaders()
-    }).pipe(
-      tap(newUser => {
-        this.usersList.update(current => [newUser, ...current]);
-      })
-    );
+    });
   }
 
   // 3. Put 
-  updateUser(id: number, body: any, endpoint: string = 'users'): Observable<Users> {
-    return this.http.put<Users>(`${this.baseUrl}/${endpoint}/${id}`, body, {
+  update(id: number, body: any, endpoint: string ): Observable<Users> {
+    return this.http.put<any>(`${this.baseUrl}/${endpoint}/${id}`, body, {
       headers: this.getHeaders()
-    }).pipe(
-      tap(updatedUser => {
-        this.usersList.update(current => 
-          current.map(u => u.id === id ? updatedUser : u)
-        );
-      })
-    );
+    });
   }
 
   // 4. Delete 
-  deleteUser(id: number, endpoint: string = 'users'): Observable<any> {
+  delete(id: number, endpoint: string ): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/${endpoint}/${id}`, {
       headers: this.getHeaders()
-    }).pipe(
-      tap(() => {
-        this.usersList.update(current => current.filter(u => u.id !== id));
-      })
-    );
+    });
   }
 
 

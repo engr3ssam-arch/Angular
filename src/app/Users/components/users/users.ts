@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { HttpclientService } from '../../../core/services/httpclient-service/httpclient-service';
+import { Component, inject, OnInit } from '@angular/core';
+import { UserService } from '../../Service/user-service';
 
 @Component({
   selector: 'app-users',
@@ -7,20 +7,18 @@ import { HttpclientService } from '../../../core/services/httpclient-service/htt
   templateUrl: './users.html',
   styleUrl: './users.scss',
 })
-export class Users {
-private userService = inject(HttpclientService);
+export class Users implements OnInit{
+  
+private userService = inject(UserService);
 
-users = this.userService.usersList; 
+ users = this.userService.usersList;
 
-//Get all User 
-ngOnInit() {
-  this.userService.getUsers().subscribe(); 
-}
+  ngOnInit() {
+    this.userService.getUser().subscribe();
+  }
 
-
-//Delete user
-deleteUser(id: number) {
-  this.userService.deleteUser(id).subscribe();
-}
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe();
+  }
 
 }
