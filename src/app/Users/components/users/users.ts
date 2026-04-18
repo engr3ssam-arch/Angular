@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { UserService } from '../../Service/user-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,14 +15,8 @@ export class Users implements OnInit{
 
 private userService = inject(UserService);
   private fb = inject(FormBuilder);
- users = this.userService.usersList;
 
-  ngOnInit() {
-    this.userService.getUser().subscribe();
-  }
-
-
-
+  users = signal<any[]>([]);
   userForm: FormGroup;
   selectedUserId: number | null = null;
 
@@ -33,9 +27,24 @@ private userService = inject(UserService);
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
-      jobTitle: ['']
+      jobTitle: [''] ,
+      city: [''], 
+    state: [''],
+    streetAdd: [''],
+    zipCode: ['']
     });
   }
+
+  
+ ngOnInit() {
+    this.userService.getUser().subscribe({
+      next: (res: any) => {
+        console.log("Response from API:", res);
+        this.users.set(res.users);
+      }
+    });
+  }
+
 
 
   onEdit(user: any) {
@@ -60,7 +69,10 @@ private userService = inject(UserService);
   UpdateUser() {
     if (this.userForm.valid && this.selectedUserId) {
       this.userService.updateExistingUser(this.selectedUserId, this.userForm.value).subscribe({
-        next: () => {
+       next: (updatedUser: any) => {
+          this.users.update(current => 
+            current.map(u => u.id === this.selectedUserId ? updatedUser : u)
+          );
           alert('Saved');
           const modalElement = document.getElementById('editUserModal');
           const modal = bootstrap.Modal.getInstance(modalElement);
@@ -70,12 +82,13 @@ private userService = inject(UserService);
     }
   }
 
-   
-
-  deleteUser(id: number) {
-    this.userService.deleteUser(id).subscribe();
+deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe({
+      next: () => {
+        this.users.update(current => current.filter(u => u.id !== id));
+      }
+    });
   }
-
 
 
 }
