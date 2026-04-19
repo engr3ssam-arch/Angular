@@ -5,3 +5,14 @@
     text-overflow: ellipsis; 
     border-right: 1px solid #eee; 
   }
+ .spinner-border {
+  $spinner-size: 2rem; 
+  width: $spinner-size;
+  height: $spinner-size;
+  border-width: 0.2em; 
+}
+
+.table-responsive {
+  animation: fadeIn 0.5s ease-in;
+}
+

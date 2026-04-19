@@ -20,6 +20,8 @@ private userService = inject(UserService);
   userForm: FormGroup;
   selectedUserId: number | null = null;
 
+  isLoading = signal<boolean>(true);
+  
   constructor() {
   
     this.userForm = this.fb.group({
@@ -37,13 +39,14 @@ private userService = inject(UserService);
 
   
  ngOnInit() {
-    this.userService.getUser().subscribe({
-      next: (res: any) => {
-        console.log("Response from API:", res);
-        this.users.set(res.users);
-      }
+  this.isLoading.set(true); 
+  this.userService.getUser().subscribe({
+    next: (res: any) => {
+      this.users.set(res.users);
+      this.isLoading.set(false); 
+    }
     });
-  }
+}
 
 
 
