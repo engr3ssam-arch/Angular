@@ -21,19 +21,22 @@ private userService = inject(UserService);
   selectedUserId: number | null = null;
 
   isLoading = signal<boolean>(true);
-  
+
   constructor() {
   
     this.userForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      maidenName: [''],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
-      jobTitle: [''] ,
+      name:[''],
+      department:[''],
+      jobTitle: [''],
       city: [''], 
     state: [''],
-    streetAdd: [''],
-    zipCode: ['']
+    address: [''],
+    postalCode: ['']
     });
   }
 
@@ -55,13 +58,17 @@ private userService = inject(UserService);
     this.userForm.patchValue({
       firstName: user.firstName,
       lastName: user.lastName,
+     username:user.username ,
+     maidenName:user.maidenName, 
       email: user.email,
       phone: user.phone,
-      jobTitle: user.jobTitle ,
+      title: user.company?.title ,
       city:user.city ,
       state:user.state ,
-      streetAdd:user.streetAdd ,
-      zipCode:user.zipCode
+      name:user.company?.name,
+      department:user.company?.department,
+      address: user.address,
+      postalCode:user.address?.postalCode
     });
 
     const modalElement = document.getElementById('editUserModal');

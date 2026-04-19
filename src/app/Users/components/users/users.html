@@ -33,7 +33,7 @@
         <div style="width: 300px; flex: 0 0 auto;">Street Address</div>
         <div style="width: 150px; flex: 0 0 auto;">City</div>
         <div style="width: 150px; flex: 0 0 auto;">State</div>
-        <div style="width: 120px; flex: 0 0 auto;">Zip Code</div>
+        <div style="width: 120px; flex: 0 0 auto;">Postal Code</div>
         <div style="width: 350px; flex: 0 0 auto;">University</div>
         <div style="width: 200px; flex: 0 0 auto;">Company Name</div>
         <div style="width: 150px; flex: 0 0 auto;">Department</div>
@@ -54,18 +54,18 @@
           <div style="width: 100px; flex: 0 0 auto;">{{ item.gender || '-' }}</div>
           <div style="width: 250px; flex: 0 0 auto;">{{ item.email || '-' }}</div>
           <div style="width: 200px; flex: 0 0 auto;">{{ item.phone || '-' }}</div>
-          <div style="width: 150px; flex: 0 0 auto;">{{ item.userName || '-' }}</div>
+          <div style="width: 150px; flex: 0 0 auto;">{{ item.username || '-' }}</div>
           <div style="width: 150px; flex: 0 0 auto;">{{ item.birthDate || '-' }}</div>
           <div style="width: 100px; flex: 0 0 auto;">{{ item.height }} cm</div>
           <div style="width: 100px; flex: 0 0 auto;">{{ item.weight }} kg</div>
-          <div style="width: 300px; flex: 0 0 auto;">{{ item.streetAdd || '-' }}</div>
-          <div style="width: 150px; flex: 0 0 auto;">{{ item.city || '-' }}</div>
-          <div style="width: 150px; flex: 0 0 auto;">{{ item.state || '-' }}</div>
-          <div style="width: 120px; flex: 0 0 auto;">{{ item.zipCode || '-' }}</div>
+          <div style="width: 300px; flex: 0 0 auto;">{{ item.address?.address || '-' }}</div>
+          <div style="width: 150px; flex: 0 0 auto;">{{ item.address?.city || '-' }}</div>
+          <div style="width: 150px; flex: 0 0 auto;">{{ item.address?.state || '-' }}</div>
+          <div style="width: 120px; flex: 0 0 auto;">{{ item.address?.postalCode || '-' }}</div>
           <div style="width: 350px; flex: 0 0 auto;">{{ item.university || '-' }}</div>
-          <div style="width: 200px; flex: 0 0 auto;">{{ item.companyName || '-' }}</div>
-          <div style="width: 150px; flex: 0 0 auto;">{{ item.department || '-' }}</div>
-          <div style="width: 250px; flex: 0 0 auto;">{{ item.jobTitle || '-' }}</div>
+          <div style="width: 200px; flex: 0 0 auto;">{{ item.company?.name || '-' }}</div>
+          <div style="width: 150px; flex: 0 0 auto;">{{ item.company?.department || '-' }}</div>
+          <div style="width: 250px; flex: 0 0 auto;">{{ item.company?.title || '-' }}</div>
 
           <div style="width: 250px; flex: 0 0 auto;">
             <button class="btn btn-sm btn-outline-primary me-1">View</button>
@@ -113,7 +113,7 @@
           </div>
           <div class="col-md-6">
             <label class="form-label fw-bold">Street Add</label>
-            <input type="text" class="form-control" formControlName="streetAdd">
+            <input type="text" class="form-control" formControlName="address">
           </div>
           <div class="col-md-6">
             <label class="form-label fw-bold">City</label>

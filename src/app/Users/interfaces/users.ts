@@ -7,19 +7,19 @@ export interface Users {
   gender :string;
   email: string;
   phone:number;
-  userName:string;
+  username:string;
   birthDate:number;
   height:number;
   weight:number;
-  streetAdd:string;
+  address:string;
   city:string;
   state:string;
-  zipCode:number;
+  postalCode:number;
   coordinates:string;
   university:string;
-  companyName:string;
+  name:string;
   department:string;
-  jobTitle:string;
+ title:string;
   image:string;
   
 }
