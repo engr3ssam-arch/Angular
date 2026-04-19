@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient , HttpParams , HttpHeaders } from '@angular/common/http';
-import { Observable , tap} from 'rxjs';
+import { Observable } from 'rxjs';
 import { Users } from '../../../Users/interfaces/users';
 
 @Injectable({
@@ -43,14 +43,14 @@ constructor (private http:HttpClient) {}
   }
 
   // 2. Post 
-  add(endpoint: string , body: any): Observable<Users> {
+  add(endpoint: string , body: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/${endpoint}`, body, {
       headers: this.getHeaders()
     });
   }
 
   // 3. Put 
-  update(id: number, body: any, endpoint: string ): Observable<Users> {
+  update(id: number, body: any, endpoint: string ): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/${endpoint}/${id}`, body, {
       headers: this.getHeaders()
     });
