@@ -1,0 +1,70 @@
+<div class="container mt-4 mb-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-white shadow-sm rounded">
+    <h4 class="m-0 text-dark fw-bold fs-3"><i class="fa-regular fa-user"></i>User Profile </h4>
+    <button class="btn btn-outline-dark fw-bold" routerLink="/users">Back to List </button>
+    </div>
+
+  @if (userData()) {
+  <div class="row g-4">
+    
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm text-center p-4">
+        <div class="position-relative d-inline-block mx-auto mb-3">
+          <img [src]="userData().image" class="rounded-circle border border-4 border-warning" width="160" height="160">
+        </div>
+        <h3 class="fw-bold m-0">{{ userData().firstName }} {{ userData().lastName }}</h3>
+        <p class="text-muted small mb-3">&#64;{{ userData().username }}</p>
+        <hr>
+        <div class="text-start">
+          <p class="mb-2"><i class="bi bi-briefcase me-2"></i>Role: {{ userData().company?.title }}</p>
+          <p class="mb-2"><i class="bi bi-envelope me-2"></i>Email: {{ userData().email }}</p>
+          <p class="mb-0"><i class="bi bi-telephone me-2"></i>Phone: {{ userData().phone }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4">
+          <div class="row g-4">
+            
+            <div class="col-md-6">
+              <h5 class="text-primary border-bottom pb-2 mb-3 fw-bold">Personal Details</h5>
+              <p>Maiden Name: {{ userData().maidenName || '-' }}</p>
+              <p>Birth Date: {{ userData().birthDate }} (Age: {{ userData().age }})</p>
+              <p>Gender: {{ userData().gender }}</p>
+              <p>Height / Weight: {{ userData().height }}cm / {{ userData().weight }}kg</p>
+            </div>
+
+            <div class="col-md-6">
+              <h5 class="text-primary border-bottom pb-2 mb-3 fw-bold">Professional Info</h5>
+              <p>Company: {{ userData().company?.name }}</p>
+              <p>Department: {{ userData().company?.department }}</p>
+              <p>University: {{ userData().university }}</p>
+            </div>
+
+            <div class="col-md-12 mt-4">
+              <h5 class="text-primary border-bottom pb-2 mb-3 fw-bold">Location & Address</h5>
+              <div class=" p-3 rounded">
+                <div class="row">
+                  <div class="col-md-6 mb-2">Street: {{ userData().address?.address }}</div>
+                  <div class="col-md-3 mb-2">City: {{ userData().address?.city }}</div>
+                  <div class="col-md-3 mb-2">State: {{ userData().address?.state }}</div>
+                  <div class="col-md-6">Postal Code: {{ userData().address?.postalCode }}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  } @else {
+    <div class="text-center p-5 mt-5">
+      <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;"></div>
+      <h5 class="text-secondary">Loading...</h5>
+    </div>
+  }
+</div>

@@ -3,6 +3,7 @@ import { Users } from '../interfaces/users';
 import { HttpclientService } from '../../core/services/httpclient-service/httpclient-service';
 import { tap } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,6 +23,8 @@ export class UserService {
     return this.httpService.delete(id, 'users');
   }
 
-
+ getUserById(id: string) {
+  return this.httpService.get(`users/${id}`); 
+ }
 
 }

@@ -68,7 +68,7 @@
           <div style="width: 250px; flex: 0 0 auto;">{{ item.company?.title || '-' }}</div>
 
           <div style="width: 250px; flex: 0 0 auto;">
-            <button class="btn btn-sm btn-outline-primary me-1">View</button>
+            <button class="btn btn-sm btn-outline-primary me-1" [routerLink]="['/viewUser',item.id]">View</button>
             <button class="btn btn-sm btn-outline-warning me-1" (click)="onEdit(item)">Edit</button>
             <button class="btn btn-sm btn-outline-danger me-1" (click)="deleteUser(item.id!)">Delete</button>
           </div>

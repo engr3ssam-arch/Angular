@@ -2,11 +2,12 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { UserService } from '../../Service/user-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from "@angular/router";
 
 declare var bootstrap: any;
 @Component({
   selector: 'app-users',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './users.html',
   styleUrl: './users.scss',
 })
