@@ -3,6 +3,7 @@ import { UserService } from '../../Service/user-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from "@angular/router";
+import { NgClass } from '@angular/common';
 
 declare var bootstrap: any;
 @Component({
@@ -20,7 +21,7 @@ private userService = inject(UserService);
   users = signal<any[]>([]);
   userForm: FormGroup;
   selectedUserId: number | null = null;
-
+  selectedImage = signal<string | null>(null);
   isLoading = signal<boolean>(true);
 
   constructor() {
@@ -35,9 +36,17 @@ private userService = inject(UserService);
       department:[''],
       jobTitle: [''],
       city: [''], 
-    state: [''],
-    address: [''],
-    postalCode: ['']
+     state: [''],
+     address: [''],
+     postalCode: [''],
+    zipCode: [''],
+    gender: [''],   
+    age: [''],
+    title: [''] ,
+    university :[''] ,
+    username: [''],
+
+
     });
   }
 
@@ -64,17 +73,22 @@ private userService = inject(UserService);
       email: user.email,
       phone: user.phone,
       title: user.company?.title ,
-      city:user.city ,
-      state:user.state ,
       name:user.company?.name,
       department:user.company?.department,
-      address: user.address,
-      postalCode:user.address?.postalCode
+      university :user.university ,
+      address: user.address?.address,  
+     city: user.address?.city,
+     state: user.address?.state,
+     postalCode: user.address?.postalCode ,
+     gender: user.gender, 
+     age: user.age
+      
     });
 
-    const modalElement = document.getElementById('editUserModal');
-    const modal = new bootstrap.Modal(modalElement);
+    let modalElement = document.getElementById('editUserModal');
+    let modal = new bootstrap.Modal(modalElement);
     modal.show();
+  
   }
 
   UpdateUser() {
@@ -101,5 +115,60 @@ deleteUser(id: number) {
     });
   }
 
+ 
+onAdd() {
+  this.selectedUserId = null; 
+  this.userForm.reset();  
+  let modalElement = document.getElementById('userModal'); 
+  if (modalElement) {
+   let modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
+}
 
+
+saveUser() {
+    if (this.userForm.valid) {
+      let userData = this.userForm.value;
+      
+      userData.image = this.selectedImage(); 
+
+      this.userService.addUser(userData).subscribe({
+        next: (res) => {
+         let newUserWithImage = { ...res, image: userData.image };
+          this.users.set([newUserWithImage, ...this.users()]);
+          this.selectedImage.set(null); 
+       let modalElement = document.getElementById('userModal'); 
+       let modal = bootstrap.Modal.getInstance(modalElement); 
+        if (modal) {
+          modal.hide();
+        }
+          alert('User Added Successfully');
+        }
+      });
+    }
+  }
+
+
+
+addUser(data: any) {
+  this.userService.addUser(data).subscribe({
+    next: (res) => {
+      this.users.set([res, ...this.users()]); 
+      
+      alert('User Added Successfully!');
+     
+    }
+  });
+}
+onFileSelected(event: any) {
+    let file = event.target.files[0];
+    if (file) {
+    let reader = new FileReader();
+      reader.onload = () => {
+        this.selectedImage.set(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 }

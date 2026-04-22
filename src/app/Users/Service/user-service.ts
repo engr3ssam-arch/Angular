@@ -26,5 +26,8 @@ export class UserService {
  getUserById(id: string) {
   return this.httpService.get(`users/${id}`); 
  }
-
+ 
+ addUser(user: any) {
+ return this.httpService.add('users/add', user);
+}
 }

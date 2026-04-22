@@ -22,7 +22,7 @@ export const routes: Routes = [
     { path: 'todo list', component:TodoList ,title:"todo list" },
     { path: 'invoice', component:Invoice ,title:"Purchase Invoice" },
     { path: 'users', component:Users ,title:"USERS" },
-    { path: 'viewUser', component:ViewUser ,title:"View User" },
+    { path: 'viewUser/:id', component:ViewUser ,title:"View User" },
     { path: 'purchase-main/:type', component:PurshaseMain },
     { path: 'purchase/:type', component: PurchaseStepper },
     { path: 'choose dial', component: ChooseDial },
