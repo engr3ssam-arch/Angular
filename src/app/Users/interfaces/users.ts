@@ -19,7 +19,7 @@ export interface Users {
   university:string;
   name:string;
   department:string;
- title:string;
+  title:string;
   image:string;
   
 }

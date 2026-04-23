@@ -3,7 +3,7 @@ import { UserService } from '../../Service/user-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from "@angular/router";
-import { NgClass } from '@angular/common';
+
 
 declare var bootstrap: any;
 @Component({
@@ -128,26 +128,36 @@ onAdd() {
 
 
 saveUser() {
-    if (this.userForm.valid) {
-      let userData = this.userForm.value;
-      
-      userData.image = this.selectedImage(); 
+  if (this.userForm.valid) {
+    const rawData = this.userForm.value;
+    const userData = {
+      ...rawData,
+      image: this.selectedImage(),
+      address: {
+        address: rawData.address, 
+        city: rawData.city,
+        state: rawData.state,
+        postalCode: rawData.postalCode
+      },
+      company: {
+        name: rawData.name,
+        department: rawData.department,
+        title: rawData.title
+      }
+    };
 
-      this.userService.addUser(userData).subscribe({
-        next: (res) => {
-         let newUserWithImage = { ...res, image: userData.image };
-          this.users.set([newUserWithImage, ...this.users()]);
-          this.selectedImage.set(null); 
-       let modalElement = document.getElementById('userModal'); 
-       let modal = bootstrap.Modal.getInstance(modalElement); 
-        if (modal) {
-          modal.hide();
-        }
-          alert('User Added Successfully');
-        }
-      });
-    }
+    this.userService.addUser(userData).subscribe({
+      next: (res) => {
+       this.users.update(current => [userData, ...current]); 
+        this.selectedImage.set(null); 
+        let modalElement = document.getElementById('userModal'); 
+        let modal = bootstrap.Modal.getInstance(modalElement); 
+        if (modal) modal.hide();
+        alert('User Added Successfully');
+      }
+    });
   }
+}
 
 
 
