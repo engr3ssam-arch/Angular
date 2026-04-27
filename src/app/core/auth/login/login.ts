@@ -3,7 +3,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { Validators } from '@angular/forms';
-import { DataService } from '../../services/dataServices/data-service';
+import { LoginService } from './service/login-service';
 
 
 
@@ -14,30 +14,30 @@ import { DataService } from '../../services/dataServices/data-service';
   styleUrl: './login.scss',
 })
 export class Login {
-loginForm :FormGroup ;
-  constructor(private _router:Router , private authService:DataService) {
+loginForm: FormGroup;
+
+  constructor(private _router: Router, private authService: LoginService) {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required]), 
       password: new FormControl('', [Validators.required, Validators.minLength(4)])
     });
   }
 
-
- onSubmit() {
-    if (this.loginForm.valid) {
-     const result = this.authService.login(this.loginForm.value);
-
-      if (result.success) {
-        alert(`HELLO :${result.user.firstName}`);
-        this._router.navigate(['/todo list']); 
-      } else {
-        alert('Email or Password are not Exist');
+  onSubmit() {
+  if (this.loginForm.valid) {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res: any) => {
+        alert(`WELCOME : ${res.firstName}`);
+        this._router.navigate(['/todo list']);
+      },
+      error: (err) => {
+        alert('Invalid Username or Password');
       }
-    } else {
-      this.loginForm.markAllAsTouched();
-    }
+    });
+  } else {
+    this.loginForm.markAllAsTouched();
   }
-  }
+}
  
-    
+}
 

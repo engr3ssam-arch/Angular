@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonEngine } from '@angular/ssr/node';
 import { DataService } from '../../../core/services/dataServices/data-service';
@@ -8,6 +8,7 @@ import { User } from '../../interface/user';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PageTitleService } from '../../../Purchase/service/pageTitle Service/page-title-service';
+import { LoginService } from '../../../core/auth/login/service/login-service';
 @Component({
   selector: 'app-nav',
   imports: [RouterLink ,RouterLinkActive ,CommonModule,FormsModule],
@@ -15,12 +16,14 @@ import { PageTitleService } from '../../../Purchase/service/pageTitle Service/pa
   styleUrl: './nav.scss',
 })
 export class Nav  {
- isPurchaseModalOpen = false;
-
-  currentUser$: Observable<User| null>;
+  isPurchaseModalOpen = false;
+  
+  authService = inject(LoginService); 
+  currentUser$ = this.authService.currentUser$
+  
   selectedType: string = '';
 
-  constructor(private authService: DataService , private router:Router ,private pageTitleService:PageTitleService) {
+  constructor( private router:Router ,private pageTitleService:PageTitleService) {
   
   this.currentUser$ = this.authService.currentUser$;
   }
