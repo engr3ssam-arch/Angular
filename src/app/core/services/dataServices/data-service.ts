@@ -1,43 +1,64 @@
-import { Injectable } from '@angular/core';
-import { User } from '../../../shared/interface/user';
-import { BehaviorSubject } from 'rxjs';
+import { inject, Inject, Injectable ,PLATFORM_ID  } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
+import { HttpclientService } from '../httpclient-service/httpclient-service';
+import { tap } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
 
-private readonly STORAGE_KEY = 'registerUser';
-private usersSubject = new BehaviorSubject<any[]>([]);
-users$ = this.usersSubject.asObservable();
-private currentUserSubject = new BehaviorSubject<User | null>(null);
+private httpService = inject(HttpclientService);
+  
+  
+private currentUserSubject = new BehaviorSubject<any>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
-  
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+  if (isPlatformBrowser(this.platformId)) {
+    const savedUser = localStorage.getItem('user');
 
-
- registerUser(userData: User) {
-    const currentUsers = this.usersSubject.value;
-    const updatedUsers = [...currentUsers, userData];
-    this.usersSubject.next(updatedUsers);
-   
-   
-  }
-  
-constructor() { }
-
-  login(credentials: any): { success: boolean, user?:any } {
-  const users = this.usersSubject.value;
-    const foundUser = users.find((u: any) => 
-      u.email === credentials.email && u.password === credentials.password
-    
-    );
-    if (foundUser) {
-      this.currentUserSubject.next(foundUser);
-       return { success: true, user: foundUser };
+    if (savedUser && savedUser !== 'undefined') {
+      try {
+        this.currentUserSubject.next(JSON.parse(savedUser));
+      } catch (e) {
+        this.currentUserSubject.next(null);
+      }
+    } else {
+      this.currentUserSubject.next(null);
     }
-
-    return { success: false };
   }
+}
+
+ 
+  signUp(userData: any): Observable<any> {
+    return this.httpService.add('users/add', userData);
+  }
+
+
+
   
+
+  login(credentials: any): Observable<any> {
+    return this.httpService.add('user/login', credentials).pipe(
+      tap((user) => {
+        if (isPlatformBrowser(this.platformId)) {
+          localStorage.setItem('user', JSON.stringify(user));
+        }
+        this.currentUserSubject.next(user);
+      })
+    );
+  }
+
+
+
+  logout() {
+  if (isPlatformBrowser(this.platformId)) {
+    localStorage.removeItem('user'); 
+  }
+  this.currentUserSubject.next(null); 
+}
+
 }

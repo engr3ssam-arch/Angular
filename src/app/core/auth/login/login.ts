@@ -3,7 +3,8 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { Validators } from '@angular/forms';
-import { LoginService } from './service/login-service';
+import { DataService } from '../../services/dataServices/data-service';
+
 
 
 
@@ -16,7 +17,7 @@ import { LoginService } from './service/login-service';
 export class Login {
 loginForm: FormGroup;
 
-  constructor(private _router: Router, private authService: LoginService) {
+  constructor(private _router: Router, private authService: DataService) {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]), 
       password: new FormControl('', [Validators.required, Validators.minLength(4)])

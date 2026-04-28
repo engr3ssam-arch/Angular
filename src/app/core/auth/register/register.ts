@@ -3,7 +3,6 @@ import { AbstractControl, FormGroup, ReactiveFormsModule, ɵInternalFormsSharedM
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
-import { User } from '../../../shared/interface/user';
 import { DataService } from '../../services/dataServices/data-service';
 @Component({
   selector: 'app-register',
@@ -15,20 +14,19 @@ export class Register {
   registerForm!: FormGroup;
 
 
-  constructor(private _authService: DataService ,private _router :Router) { }
+  constructor(public authService: DataService ,private _router :Router) { }
 
   ngOnInit(): void {
 
-    this.registerForm = new FormGroup({
-      firstName: new FormControl(null, [Validators.required, Validators.minLength(3),Validators.maxLength(20)]),
-      lastName: new FormControl(null, [Validators.required, Validators.minLength(3),Validators.maxLength(20)]),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{4,8}$/)]),
-      rePassword: new FormControl(null, [Validators.required ,Validators.pattern(/^[0-9]{4,8}$/)]),
-      description: new FormControl(null)
-    },  {validators:this.confirmpassword} );
-
-
+  this.registerForm = new FormGroup({
+  firstName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+  lastName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+  maidenName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+  email: new FormControl(null, [Validators.required, Validators.email]),
+  password: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{4,8}$/)]),
+  rePassword: new FormControl(null, [Validators.required]),
+  username: new FormControl(null, [Validators.required]) 
+}, { validators: this.confirmpassword });
   }
 
  
@@ -47,24 +45,19 @@ export class Register {
 
 
 
-  Register() {
-     if(this.registerForm.valid){
-     const userObj:User = {
-      firstName: this.registerForm.value.firstName,
-      lastName: this.registerForm.value.lastName,
-      email: this.registerForm.value.email,
-      password: this.registerForm.value.password,
-      rePassword: this.registerForm.value.rePassword,
-      description: this.registerForm.value.description
-    };
+Register() {
+  if (this.registerForm.valid) {
+    
+    const { rePassword, ...userData } = this.registerForm.value;
 
-    console.log('User Object:', userObj);
-    this._authService.registerUser(userObj);
-     this._router.navigate(['/login']); 
-  } else {
-    this.registerForm.markAllAsTouched();
+    this.authService.signUp(userData).subscribe({
+      next: (res) => {
+        alert('Account Created Successfully!');
+        this._router.navigate(['/login']);
+      },
+      error: (err) => alert('Error creating account')
+    });
   }
-}
-  
 
+}
 }
