@@ -59,6 +59,7 @@ private currentUserSubject = new BehaviorSubject<any>(null);
     localStorage.removeItem('user'); 
   }
   this.currentUserSubject.next(null); 
+  
 }
 
 }
