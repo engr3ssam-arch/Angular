@@ -21,11 +21,15 @@ export class Register {
   this.registerForm = new FormGroup({
   firstName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
   lastName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-  maidenName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+  maidenName: new FormControl(null, [Validators.minLength(3)]),
+  gender: new FormControl('', [Validators.required]),
+  age: new FormControl(null, [Validators.required, Validators.min(18)]),
   email: new FormControl(null, [Validators.required, Validators.email]),
   password: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{4,8}$/)]),
   rePassword: new FormControl(null, [Validators.required]),
-  username: new FormControl(null, [Validators.required]) 
+  username: new FormControl(null, [Validators.required]) ,
+   university: new FormControl(null), 
+  Department: new FormControl(null),
 }, { validators: this.confirmpassword });
   }
 
